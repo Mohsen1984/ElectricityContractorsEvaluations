@@ -1,0 +1,33 @@
+﻿{
+  "PersonNavigationList": "افراد ",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+  "personID": "شناسه",
+  "firstName": "نام",
+  "lastName": "نام خانوادگی",
+  "fullName": "نام و نام خانوادگی",
+  "nationalID": "کد ملی",
+  "mobileNo": "موبایل",
+  "tel": "تلفن",
+  "fatherName": "نام پدر",
+  "idNumber": "شماره شناسنامه",
+  "email": "پست الکترونیک",
+  "address": "آدرس",
+  "educationLevelRef": "تحصیلات",
+
+  "state": "وضعیت",
+  "description": "توضیحات"
+
+
+
+
+}

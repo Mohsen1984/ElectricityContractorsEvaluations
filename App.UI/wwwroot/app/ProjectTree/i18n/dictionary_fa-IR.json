@@ -1,0 +1,36 @@
+﻿{
+  "ProjectTree": "درخت واره پروژه ها",
+  "TreeComponent": "درخت واره",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+  "projectTreeId": "شناسه",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "projectTreeRef": "پروژه پدر",
+  "serviceTreeRef": " پدر",
+
+
+  "levelCode": "نوع شاخه درختواه",
+  "title": "عنوان ",
+  "code": "کد",
+  "isTemplate": "قالب است ؟",
+  "state": "وضعیت",
+  "description": "توضیحات",
+  "serviceTitle": "عنوان خدمت",
+  "ServiceTemplateTree": "درختواره خدمات / نقش",
+  "return": "بازگشت",
+  "projectInfoTitle": "اطلاعات پروژه",
+  
+
+  "projectInfo": "??????????????????????",
+
+  "serviceTemplateTreeRef": "سرویس مربوطه",
+   "projectNo": "شماره پروژه"
+}

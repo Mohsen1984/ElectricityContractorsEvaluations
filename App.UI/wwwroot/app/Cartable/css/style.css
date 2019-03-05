@@ -1,0 +1,66 @@
+﻿td .ui-select-container .ui-select-choices{
+    position:relative
+}
+
+.boxContainer {
+    padding: 7px !important;
+    margin-bottom: -15px;
+}
+
+.redBox {
+    color: white;
+    background-color: #e85050;
+    padding: 15px !important;
+    box-shadow: 5px 5px 10px #a7a4a4 !important;
+}
+
+.blueBox {
+    color: white;
+    background-color: #6d6dbd;
+    padding: 15px !important;
+    box-shadow: 5px 5px 10px #a7a4a4 !important;
+}
+
+.greenBox {
+    color: white;
+    background-color: #41af41;
+    padding: 15px !important;
+    box-shadow: 5px 5px 10px #a7a4a4 !important;
+}
+
+.orangeBox {
+    color: white;
+    background-color: #d07120;
+    padding: 15px !important;
+    box-shadow: 5px 5px 10px #a7a4a4 !important;
+}
+
+.purpleBox {
+    color: white;
+    background-color: #9339e6;
+    padding: 15px !important;
+    box-shadow: 5px 5px 10px #a7a4a4 !important;
+}
+
+.activeBox {
+    box-shadow: 5px 5px 10px #393636 !important;
+}
+
+.boxIcon {
+    position: relative;
+    bottom: 25px;
+    font-size: 30px;
+    float: left;
+}
+
+.greenChoise {
+    color: white;
+    background-color: #41af41;
+    width: 200px !important;
+    height: inherit !important;
+}
+
+.redChoise {
+    color: white;
+    background-color: #e85050;
+}

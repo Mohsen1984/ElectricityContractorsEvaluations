@@ -1,0 +1,20 @@
+﻿{
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "In Progress": "در دست اقدام",
+  "Done": "انجام شده",
+  "New": "جدید",
+  "NoRecordFound": "رکوردی یافت نشد",
+  "Row": "ردیف",
+  "Title": "عنوان",
+  "DueDate": "مهلت اتمام",
+  "Priority": "الویت",
+  "CreatedBy": "کاربر ایجاد کننده",
+  "CreatedDate": "تاریخ ایجاد",
+  "FormLink": "پیوند به فرم مربوطه",
+  "Description": "توضیح",
+  "Status": "وضعیت",
+  "Actions": "عملیات",
+  "Choose an Action": "یک عملیات انتخاب کنید",
+  "Link": "پیوند"
+}

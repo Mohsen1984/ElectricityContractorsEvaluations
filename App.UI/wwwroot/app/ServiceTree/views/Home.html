@@ -1,0 +1,55 @@
+﻿<div class="container-fluid">
+    <div class="well well-sm es-toolbar">
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="es-toolbar-title es-title" ng-bind="'ServiceTree' | translate"></label>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title" ng-bind="'TreeComponent' | translate"></h3>
+    </div>
+    <div class="panel-body">
+        <!--<es-datasource name="home.entityTreeListDs"
+                       autoload="true"
+                       method="GET"
+                       url='/ServiceTree/EntityTreeNodes'>
+        </es-datasource>-->
+        <div es-tree
+             autoload="false"
+             tree-data="lazy"
+             tree-datasource="home.entityTreeListDs"
+             tree-node-template="lazyNodeTemplate.html">
+        </div>
+        <script type="text/ng-template" id="lazyNodeTemplate.html">
+
+
+            <i ng-if="node.hasChild" class="fa fa-server"></i>
+            <i ng-if="!node.hasChild" class="fa fa-file"></i>
+            <span>{{node.text}} ( {{node.Code}} )</span>
+
+            <button ng-if="node.level==2 " title="افزودن خدمت" class="btn btn-success" ui-sref="ServiceTree.CreateAsChild({id : node.id,level: '2' })">
+                <i class="fa fa-cogs"></i>
+            </button>
+
+            <button ng-if="node.level==2 || node.level==3" title="افزودن نقش" class="btn btn-success" ui-sref="ServiceTree.CreateAsChild({id : node.id,level: '3' })">
+                <i class="fa fa-child"></i>
+            </button>
+            <button es-btn title="ویرایش" btn-color="primary" btn-icon="fa fa-pencil" ui-sref="ServiceTree.Edit({id :node.id })"></button>
+      
+        </script>
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default" href="/">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </a>
+    </div>
+</div>

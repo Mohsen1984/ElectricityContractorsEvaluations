@@ -1,0 +1,80 @@
+﻿<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title"><span class="fa fa-close"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="OUTree" method="post">
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="delete.ds.$data.ouTreeId" />
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'title'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.title"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'oUTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.OUTree" autoload="true" method="GET" url='/OUTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="delete.ds.$data.oUTreeRef"
+                             datasource="esDropdown.OUTree"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="OUTree.reginalPowerCorpRef.$error" ng-if="OUTree.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="delete.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="OUTree.reginalPowerCorpRef.$error" ng-if="OUTree.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'code'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.code"></span>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'description'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.description"></span>
+            </div>
+            <div class="clearfix"></div>
+            <p class="text-danger" ng-bind="'DeleteComfirmation'| translate"></p>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="delete.ds.$data"
+                es-ng-post-form-name="OUTree"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="OUTree.$invalid"
+                es-ng-post-url="/OUTree/Delete"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="OUTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

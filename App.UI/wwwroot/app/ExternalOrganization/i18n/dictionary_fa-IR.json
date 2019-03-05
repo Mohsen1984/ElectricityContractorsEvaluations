@@ -1,0 +1,28 @@
+﻿{
+  "ExternalOrganization": " سازمانهای خارجی",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+
+  "externalOrganizationID": "شناسه",
+  "externalOrgTypeRef": "نوع سازمان خارجی",
+  "title": "عنوان سازمان خارجی",
+  "manager": "نام مدیر عامل",
+  "managerMobile": "شماره همراه مدیر عامل",
+  "tel": "شماره تماس",
+  "fax": "فکس",
+  "mail": "ایمیل",
+  "mainAddress": "آدرس اصلی",
+  "subAddress": "آدس فرعی",
+  "registerCode": "شماره ثبت",
+  "state": "وضعیت",
+  "description": "توضیحات"
+}

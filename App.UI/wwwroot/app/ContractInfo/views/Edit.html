@@ -1,0 +1,103 @@
+﻿<div class="panel panel-primary esAffix" es-loading="edit.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-pencil"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body" style="position:relative">
+        <form name="ContractInfo" novalidate>
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="edit.ds.$data.ContractInfoId" />
+
+
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="edit.ds.$data.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="ContractInfo.title.$error" ng-if="ContractInfo.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="code" class="control-label required-label">{{'contractNo'| translate }}</label>
+                <input name="code" ng-model="edit.ds.$data.contractNo" class="form-control" placeholder="{{'contractNo'| translate}}" required>
+                <div ng-messages="ContractInfo.contractNo.$error" ng-if="ContractInfo.contractNo.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'projectTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectTreeRef" autoload="true" method="GET" url='/ProjectTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.projectTreeRef"
+                             datasource="esDropdown.projectTreeRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ContractInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ContractInfo.reginalPowerCorpRef.$error" ng-if="ContractInfo.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="description" ng-model="edit.ds.$data.description" class="form-control" placeholder="{{'description'| translate}}" >
+                <div ng-messages="ContractInfo.description.$error" ng-if="ContractInfo.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+
+
+            <div class="clearfix visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="state" class="control-label required-label" ng-bind="'State'| translate"></label>
+                <input name="state" type="checkbox" ng-checked="edit.ds.$data.state" ng-model="edit.ds.$data.state" placeholder="{{'State' | translate}}">
+            </div>
+
+
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                btn-icon="fa fa-pencil"
+                es-ng-post
+                post-object="edit.ds.$data"
+                es-ng-post-form-name="ContractInfo"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ContractInfo.$invalid"
+                es-ng-post-url="/ContractInfo/Edit"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-pencil"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ContractInfo.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

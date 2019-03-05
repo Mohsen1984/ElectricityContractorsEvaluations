@@ -1,0 +1,22 @@
+﻿{
+  "projectInfo": "اطلاعات پروژه ها",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+  "projectId": "شناسه",
+  "projectTreeRef": " درخت پروژه",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "title": "عنوان پروژه",
+  "projectNo": "شماره پروژه",
+  "description": "توضیحات",
+  "state": "وضعیت"
+
+}

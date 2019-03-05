@@ -1,0 +1,13 @@
+using System;
+using Paint;
+
+////test
+namespace Paint.Models
+{
+    public class ErrorViewModel
+    {
+        public string RequestId { get; set; }
+
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
+}

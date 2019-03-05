@@ -1,0 +1,73 @@
+﻿<div class="container-fluid">
+    <div class="well well-sm es-toolbar">
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="es-toolbar-title es-title" ng-bind="'ProductNavigationList' | translate"></label>
+            </div>
+            <div class="col-sm-2">
+                
+            </div>
+        </div>
+    </div>
+    <div es-grid
+         grid-datasource="root.ds"
+         grid-paging="true"
+         grid-data="remote"
+         class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div ng-include src="'app/product-navigation/views/Search.html'" ng-controller="SearchController as search" include-replace></div>
+            </div>
+            <div class="col-sm-6">
+                <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="ProductNavigation.Create"></button>
+                <button es-btn
+                        btn-color="info"
+                        btn-icon="fa fa-list-alt"
+                        ng-show="$selectedItem"
+                        ui-sref="ProductNavigation.Details({id : $selectedItem.id })"></button>
+                <button es-btn
+                        btn-color="primary"
+                        btn-icon="fa fa-pencil"
+                        ng-show="$selectedItem"
+                        ui-sref="ProductNavigation.Edit({id : $selectedItem.id })"></button>
+                <button es-btn
+                        btn-color="danger"
+                        btn-icon="fa fa-close"
+                        ng-show="$selectedItem"
+                        ui-sref="ProductNavigation.Delete({id : $selectedItem.id })"></button>
+            </div>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr class="info">
+
+                        <th class="col-xs-1 text-center" style="width: 3.166666665%">
+                            ردیف
+                        </th>
+                        <th grid-sorting="name" class="col-xs-2 text-center">
+                            نام
+                        </th>
+                        <th grid-sorting="nationalCode" class="col-xs-1 text-center">
+                            توضیحات
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-if="$items.length == 0">
+                        <td colspan="8">
+                            <h5 class="text-center">رکوردی یافت نشد</h5>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="item in $items" grid-selectable="item">
+                        <td class="text-center" ng-bind="item.$index"></td>
+                        <td ng-bind="item.name"></td>
+                        <td ng-bind="item.description"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

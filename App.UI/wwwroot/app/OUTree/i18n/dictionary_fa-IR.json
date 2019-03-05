@@ -1,0 +1,23 @@
+﻿{
+  "OUTree": "درختواره واحد های سازمانی",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+
+  "oUTreeId": "شناسه",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "oUTreeRef": "پدر",
+  "title": "عنوان واحد سازمانی",
+  "code": "کد واحد سازمانی",
+  "description": "توضیحات",
+  "state": "وضعیت"
+
+}

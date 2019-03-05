@@ -1,0 +1,22 @@
+﻿{
+  "OUTree": "درختواره واحد های سازمانی",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+  "contactId": "شناسه",
+  "projectTreeRef": "درخت پروژه",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "title": "عنوان قرار داد ",
+  "contractNo": "شماره قرار داد ",
+  "description": "توضیحات",
+  "state": "وضعیت"
+
+}

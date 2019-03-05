@@ -1,0 +1,64 @@
+﻿<div class="container-fluid">
+    <div class="well well-sm es-toolbar">
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="es-toolbar-title es-title" ng-bind="'ServiceTemplateTree' | translate"></label>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="ProjectTree.CreateService({parentId:null,level: '2',projecttreeref:homeservice.projectref })"></button>
+        <!--در صورت برداشتن کد زیر تریی بعد از اضافه شدن آپدیت نمیشود-->
+       {{}}
+    </div>
+ 
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title" ng-bind="'ServiceTemplateTree' | translate"></h3>
+    </div>
+    <div class="panel-body">
+
+        <!--<es-datasource name="homeservice.dsServiceTree"
+                   autoload="true"
+                   method="GET"
+                   url='/ServiceTemplateTree/EntityServiceTemplateTreeNodes'>
+    </es-datasource>-->
+        <div es-tree
+             autoload="true"
+             tree-data="lazy"
+             tree-datasource="homeservice.dsServiceTree"
+             tree-node-template="lazyNodeTemplate.html">
+        </div>
+        <script type="text/ng-template" id="lazyNodeTemplate.html">
+
+
+            <i ng-if="node.hasChild" class="fa fa-server"></i>
+            <i ng-if="!node.hasChild" class="fa fa-file"></i>
+            <span>{{node.text}} ( {{mode.Code}} )</span>
+
+            <button ng-if="node.level==2 " title="افزودن خدمت" class="btn btn-success" ui-sref="ProjectTree.CreateService({parentId : node.id,level: '2',projecttreeref:parent.homeservice.projectref })">
+                <i class="fa fa-cogs"></i>
+            </button>
+
+
+            <button ng-if="node.level==2 || node.level==3" title="افزودن نقش" class="btn btn-success" ui-sref="ProjectTree.CreateService({parentId : node.id,level: '3',projecttreeref:parent.homeservice.projectref })">
+                <i class="fa fa-child"></i>
+            </button>
+            <button es-btn title="ویرایش" btn-color="primary" btn-icon="fa fa-pencil" ui-sref="ProjectTree.EditService({id :node.id,projecttreeref:parent.homeservice.projectref })"></button>
+
+
+        </script>
+    </div>
+
+</div>
+<div class="panel-footer">
+    <button class="btn btn-default" ui-sref="ProjectTree.List">
+        <i class="fa fa-times-circle"></i>
+        <span class="padding-right-3" ng-bind="'return'| translate"></span>
+    </button>
+</div>

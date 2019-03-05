@@ -1,0 +1,10 @@
+﻿$direction: rtl;
+@import "esGrid";
+
+ul[uib-pagination].pagination {
+    margin-right: 0 !important;
+
+    .pagination {
+        margin-right: 0 !important;
+    }
+}

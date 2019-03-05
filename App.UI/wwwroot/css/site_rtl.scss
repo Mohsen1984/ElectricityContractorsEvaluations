@@ -1,0 +1,14 @@
+﻿@import 'site';
+html {
+    direction: rtl;
+}
+
+/*ui-select*/
+.ui-select-container .ui-select-placeholder {
+    text-align: right !important;
+    float: right;
+    margin-right: 15px;
+}
+.ui-select-container .ui-select-match-text {
+    text-align: right !important;
+}

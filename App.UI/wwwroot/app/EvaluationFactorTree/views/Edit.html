@@ -1,0 +1,110 @@
+﻿<div class="panel panel-primary esAffix" es-loading="edit.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-pencil"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body" style="position:relative">
+        <form name="EvaluationFactorTree" novalidate>
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="edit.ds.$data.evaluationFactorTreeId" />
+
+
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="edit.ds.$data.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="EvaluationFactorTree.title.$error" ng-if="EvaluationFactorTree.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <!--  <div class="form-group col-md-4">
+              <label for="EvaluationFactorTree" class="control-label required-label" ng-bind="'evaluationFactorType'| translate"></label>
+              <select ng-model="edit.ds.$data.evaluationFactorType" ng-options="x.value as x.name for x in edit.evaluationFactorType1" class="form-control" placeholder="{{'evaluationFactorType'| translate}}"></select>
+                <select ng-model="edit.ds.$data.evaluationFactorType" class="form-control" placeholder="{{'levelCode'| translate}}">
+                    <option ng-repeat="x in edit.evaluationFactorType" value="{{x.value}}">{{x.name}}</option>
+                </select>
+                <div ng-messages="EvaluationFactorTree.evaluationFactorType.$error" ng-if="ProjectTreeForm.evaluationFactorType.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+    </div>
+                <div class="clearfix  visible-md-block visible-lg-block"></div>-->
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'evaluationFactorType'| translate }}</label>
+                <es-datasource name="esDropdown.EvaluationFactorType" autoload="true" method="GET" url='/EvaluationFactorTree/Get_LovEvaluationFactorType' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.evaluationFactorType"
+                             datasource="esDropdown.EvaluationFactorType"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="EvaluationFactorTree.EvaluationFactorType.$error" ng-if="EvaluationFactorTree.EvaluationFactorType.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'evaluationFactorRef'| translate }}</label>
+                <es-datasource name="esDropdown.EvaluationFactorTree" autoload="true" method="GET" url='/EvaluationFactorTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.evaluationFactorRef"
+                             datasource="esDropdown.EvaluationFactorTree"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled=true>
+                </es-dropdown>
+                <div ng-messages="EvaluationFactorTree.reginalPowerCorpRef.$error" ng-if="EvaluationFactorTree.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="description" ng-model="edit.ds.$data.description" class="form-control" placeholder="{{'description'| translate}}" required>
+                <div ng-messages="EvaluationFactorTree.description.$error" ng-if="EvaluationFactorTree.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+
+
+            <div class="clearfix visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="state" class="control-label required-label" ng-bind="'State'| translate"></label>
+                <input name="state" type="checkbox" ng-checked="edit.ds.$data.state" ng-model="edit.ds.$data.state" placeholder="{{'State' | translate}}">
+            </div>
+
+
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                btn-icon="fa fa-pencil"
+                es-ng-post
+                post-object="edit.ds.$data"
+                es-ng-post-form-name="EvaluationFactorTree"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="EvaluationFactorTree.$invalid"
+                es-ng-post-url="/EvaluationFactorTree/Edit"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-pencil"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="EvaluationFactorTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

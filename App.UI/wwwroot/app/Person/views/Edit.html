@@ -1,0 +1,150 @@
+﻿<div class="panel panel-primary esAffix" es-loading="edit.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-pencil"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body" style="position:relative">
+        <form name="PersonForm" novalidate>
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="edit.ds.$data.personId" />
+            <div class="form-group col-md-4">
+                <label for="firstName" class="control-label required-label">{{'firstName'| translate }}</label>
+                <input name="firstName" ng-model="edit.ds.$data.firstName" class="form-control" placeholder="{{'firstName'| translate}}" required>
+                <div ng-messages="PersonForm.firstName.$error" ng-if="PersonForm.firstName.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="lastName" class="control-label required-label">{{'lastName'| translate }}</label>
+                <input name="lastName" ng-model="edit.ds.$data.lastName" class="form-control" placeholder="{{'lastName'| translate}}" required>
+                <div ng-messages="PersonForm.lastName.$error" ng-if="PersonForm.lastName.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="nationalID" class="control-label required-label">{{'nationalID'| translate }}</label>
+                <input name="nationalID" ng-model="edit.ds.$data.nationalID" class="form-control" placeholder="{{'nationalID'| translate}}" >
+                <div ng-messages="PersonForm.nationalID.$error" ng-if="PersonForm.nationalID.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="mobileNo" class="control-label required-label">{{'mobileNo'| translate }}</label>
+                <input name="mobileNo" ng-model="edit.ds.$data.mobileNo" class="form-control" placeholder="{{'mobileNo'| translate}}" >
+                <div ng-messages="PersonForm.mobileNo.$error" ng-if="PersonForm.mobileNo.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="tel" class="control-label required-label">{{'tel'| translate }}</label>
+                <input name="tel" ng-model="edit.ds.$data.tel" class="form-control" placeholder="{{'tel'| translate}}" >
+                <div ng-messages="PersonForm.tel.$error" ng-if="PersonForm.tel.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="fatherName" class="control-label required-label">{{'fatherName'| translate }}</label>
+                <input name="fatherName" ng-model="edit.ds.$data.fatherName" class="form-control" placeholder="{{'fatherName'| translate}}" >
+                <div ng-messages="PersonForm.fatherName.$error" ng-if="PersonForm.fatherName.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="idNumber" class="control-label required-label">{{'idNumber'| translate }}</label>
+                <input name="idNumber" ng-model="edit.ds.$data.idNumber" class="form-control" placeholder="{{'idNumber'| translate}}" >
+                <div ng-messages="PersonForm.idNumber.$error" ng-if="PersonForm.idNumber.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="email" class="control-label required-label">{{'email'| translate }}</label>
+                <input name="email" ng-model="edit.ds.$data.email" class="form-control" placeholder="{{'email'| translate}}" >
+                <div ng-messages="PersonForm.email.$error" ng-if="PersonForm.email.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="address" class="control-label required-label">{{'address'| translate }}</label>
+                <input name="address" ng-model="edit.ds.$data.address" class="form-control" placeholder="{{'address'| translate}}" >
+                <div ng-messages="PersonForm.address.$error" ng-if="PersonForm.address.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+
+            <div class="form-group col-md-4">
+                <label for="EducationLevelRef" class="control-label required-label">{{'educationLevelRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/EducationalLevel/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.educationLevelRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectTreeForm.reginalPowerCorpRef.$error" ng-if="ProjectTreeForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="description" ng-model="edit.ds.$data.description" class="form-control" placeholder="{{'description'| translate}}">
+                <div ng-messages="PersonForm.description.$error" ng-if="PersonForm.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                btn-icon="fa fa-pencil"
+                es-ng-post
+                post-object="edit.ds.$data"
+                es-ng-post-form-name="PersonForm"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="PersonForm.$invalid"
+                es-ng-post-url="/Person/Edit"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-pencil"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="Person.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

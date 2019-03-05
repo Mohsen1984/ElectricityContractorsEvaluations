@@ -1,0 +1,184 @@
+﻿<div class="container-fluid">
+   
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title" ng-bind="'ProjectTree' | translate"></h3>
+        {{home.nodeId}}
+    </div>
+    <div class="panel-body">
+        <p class="clearfix"></p>
+        <div class="col-sm-6">
+            <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="ProjectTree.Create({parentId:null,level :1 })"></button>
+
+        </div>
+        <p class="clearfix"></p>
+        <div class="col-lg-12 col-md-12" style="border:1px solid;height:400px;overflow:auto;">
+           <es-datasource name="home.entityTreeListDs"
+                           autoload="true"
+                           method="GET"
+                           url='/ProjectTree/EntityTreeNodesProjects'>
+            </es-datasource>
+            <div es-tree
+                 autoload="false"
+                 tree-data="lazy"
+                 tree-datasource="home.entityTreeListDs"
+                 tree-node-template="lazyNodeTemplate.html">
+            </div>
+            <script type="text/ng-template" id="lazyNodeTemplate.html">
+                <i ng-if="node.hasChild" class="fa fa-folder"></i>
+                <i ng-if="!node.hasChild" class="fa fa-file"></i>
+                <span>{{node.text}}--{{node.level}}</span>
+                <!--ng-click="parent.home.f(node.)-->
+                <button ng-if="node.level==1 " title="افزودن پروژه" class="btn btn-success" ui-sref="ProjectTree.Create({parentId : node.id,level: '1' })">
+                    <i class="fa fa-cogs"></i>
+
+                </button>
+
+                <button es-btn title="ویرایش" btn-color="primary" btn-icon="fa fa-pencil" ui-sref="ProjectTree.Edit({id :node.id })"></button>
+
+                <button ng-click="parent.home.ProjectTreeClick(node)" es-btn title="مشاهده قالب خدمات" btn-color="primary" btn-icon="fa fa-pencil">
+                    <i class="fa fa-plus"></i>
+                </button>
+                
+       
+            </script>
+        </div>
+        <p class="clearfix"></p>
+
+        <!--////////////////////////////////////////////////////////////-->
+        <div class="col-lg-4 col-md-4" style="border:1px solid;border-left:none;height:400px;overflow:auto;">
+
+            <div es-grid
+                 grid-datasource="home.dsService"
+                 grid-paging="true"
+                 grid-data="remote"
+                 class="panel panel-default">
+                <div class="panel-body">
+          
+                    <div class="col-sm-6">
+                        <button es-btn btn-color="success" btn-icon="fa fa-list-alt" ui-sref="ProjectTree.ListService({projectref:GprojectId })"></button>
+                      
+
+                    </div>
+                </div>
+                <div class="table-responsive">
+
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                            <tr class="info">
+
+                                <th class="col-xs-1 text-center" style="width: 3.166666665%">
+                                    ردیف
+                                </th>
+                                <th grid-sorting="projectId" class="col-xs-2 text-center">
+                                    شناسه
+                                </th>
+                                <th grid-sorting="serviceTitle" class="col-xs-2 text-center">
+                                    <label>{{'serviceTitle'| translate }}</label>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-if="$items.length == 0">
+                                <td colspan="8">
+                                    <h5 class="text-center">رکوردی یافت نشد</h5>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="item in $items" grid-selectable="item" ng-click="home.GridServiceRowClick(item)">
+                                <td class="text-center" ng-bind="item.$index"></td>
+                                <td ng-bind="item.serviceTemplateTreeId"></td>
+                                <td ng-bind="item.title"></td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+          
+
+
+        </div>
+
+        <!--////////////////////////////////////////////////////////////////////////////////////////-->
+        <div class="col-lg-8 col-md-8" style="border:1px solid;height:400px;overflow:auto;">
+            <div es-grid
+                 grid-datasource="home.dsProjectInfo"
+                 grid-paging="true"
+                 grid-data="remote"
+                 class="panel panel-default">
+                <div class="panel-body">
+                    <!--<div class="col-xs-12">
+                        <div ng-include src="'app/ProjectTree/views/Search.html'" ng-controller="SearchController as search" include-replace></div>
+                    </div>-->
+                    <div class="col-sm-6">
+                        <button es-btn btn-color="success" ng-show="GserviceTreeTempId!=0" btn-icon="fa fa-plus" ui-sref="ProjectTree.CreateProjectInfo"></button>
+                    
+                        <button es-btn
+                                btn-color="info"
+                                btn-icon="fa fa-list-alt"
+                                ng-show="$selectedItem"
+                                ui-sref="ProjectTree.DetailsProjectInfo({id : $selectedItem.projectId })"></button>
+                        <button es-btn
+                                btn-color="primary"
+                                btn-icon="fa fa-pencil"
+                                ng-show="$selectedItem"
+                                ui-sref="ProjectTree.EditProjectInfo({id : $selectedItem.projectId })"></button>
+                        <button es-btn
+                                btn-color="danger"
+                                btn-icon="fa fa-close"
+                                ng-show="$selectedItem"
+                                ui-sref="ProjectTree.DeleteProjectInfo({id : $selectedItem.projectId })"></button>
+                    </div>
+                </div>
+                <div class="table-responsive">
+
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                            <tr class="info">
+
+                                <th class="col-xs-1 text-center" style="width: 3.166666665%">
+                                    ردیف
+                                </th>
+                                <th grid-sorting="personId" class="col-xs-2 text-center">
+                                    شناسه
+                                </th>
+                                <th grid-sorting="serviceTitle" class="col-xs-2 text-center">
+                                    <label>{{'projectInfoTitle'| translate }}</label>
+                                </th>
+                                <th  class="col-xs-2 text-center">
+                                   
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-if="$items.length == 0">
+                                <td colspan="8">
+                                    <h5 class="text-center">رکوردی یافت نشد</h5>
+                                </td>
+                            </tr>
+                            <tr ng-repeat="item in $items" grid-selectable="item">
+                                <td class="text-center" ng-bind="item.$index"></td>
+                                <td ng-bind="item.projectId"></td>
+                                <td ng-bind="item.title"></td>
+                                <td><a href="/ServiceTree#!/List/{{item.projectId}}/{{GprojectId}}/{{GserviceTreeTempId}}" class="btn btn-default">خدمات پروژه</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default" ui-sref="/">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </a>
+    </div>
+</div>

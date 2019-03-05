@@ -1,0 +1,114 @@
+﻿<div class="panel panel-primary esAffix" es-loading="createaschild.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-pencil"></span>{{'createaschild'| translate }}</h3>
+    </div>
+    <div class="panel-body" style="position:relative">
+        <form name="ServiceTemplateTreeForm" novalidate>
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="createaschild.ds.$data.serviceTemplateTreeId" />
+
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>{{createaschild.ds.$data[0].title}}
+                <input name="title" ng-model="createaschild.ds.$data.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="ServiceTemplateTreeForm.title.$error" ng-if="ServiceTemplateTreeForm.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+          
+
+            <div class="form-group col-md-4">
+                <label for="reginalPowerCorpRef" class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.reginalPowerCorpRef" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="createaschild.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.reginalPowerCorpRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ServiceTemplateTreeForm.reginalPowerCorpRef.$error" ng-if="ServiceTemplateTreeForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="serviceTemplateTreeRef" class="control-label required-label">{{'serviceTemplateTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.serviceTemplateTreeRef" autoload="true" method="GET" url='/ServiceTemplateTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="createaschild.ds.$data.serviceTemplateTreeRef"
+                             datasource="esDropdown.serviceTemplateTreeRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ServiceTemplateTreeForm.serviceTemplateTreeRef.$error" ng-if="ServiceTemplateTreeForm.serviceTemplateTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+
+            <div class="form-group col-md-4">
+                <label for="levelCode" class="control-label required-label" ng-bind="'levelCode'| translate"></label>
+                <select ng-disabled="true" ng-model="createaschild.ds.$data.level" class="form-control" placeholder="{{'levelCode'| translate}}">
+                    <option ng-repeat="x in createaschild.levelCode2" value="{{x.value}}">{{x.name}}</option>
+                </select>
+                <div ng-messages="ServiceTemplateTreeForm.levelCode.$error" ng-if="ServiceTemplateTreeForm.levelCode.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="code" class="control-label required-label">{{'code'| translate }}</label>
+                <input name="code" ng-model="createaschild.ds.$data.code" class="form-control" placeholder="{{'code'| translate}}">
+                <div ng-messages="ServiceTemplateTreeForm.code.$error" ng-if="ServiceTemplateTreeForm.code.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <!--<div class="form-group col-md-4">
+        <label for="istemplate" class="control-label required-label">{{'isTemplate'| translate }}</label>
+        <input name="istemplate" type="checkbox" class="form-control" ng-checked="createaschild.ds.$data.isTemplate" ng-model="createaschild.ds.$data.isTemplate">
+    </div>
+    <div class="clearfix  visible-md-block visible-lg-block"></div>-->
+
+
+            <div class="form-group col-md-4">
+                <label for="Description" class="control-label required-label" ng-bind="'Description'| translate"></label>
+                <input name="Description" ng-model="createaschild.ds.$data.description" class="form-control" placeholder="{{'Description'| translate}}">
+                <div ng-messages="ServiceTemplateTreeForm.description.$error" ng-if="ServiceTemplateTreeForm.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                btn-icon="fa fa-pencil"
+                es-ng-post
+                post-object="createaschild.ds.$data"
+                es-ng-post-form-name="ServiceTemplateTreeForm"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ServiceTemplateTreeForm.$invalid"
+                es-ng-post-url="/ServiceTemplateTree/Create"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-pencil"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ServiceTemplateTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

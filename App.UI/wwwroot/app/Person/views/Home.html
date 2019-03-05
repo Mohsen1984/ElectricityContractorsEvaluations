@@ -1,0 +1,81 @@
+﻿<div class="container-fluid">
+    <div class="well well-sm es-toolbar">
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="es-toolbar-title es-title" ng-bind="'PersonNavigationList' | translate"></label>
+            </div>
+            <div class="col-sm-2">
+                
+            </div>
+        </div>
+    </div>
+    <div es-grid
+         grid-datasource="root.ds"
+         grid-paging="true"
+         grid-data="remote"
+         class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div ng-include src="'app/Person/views/Search.html'" ng-controller="SearchController as search" include-replace></div>
+            </div>
+            <div class="col-sm-6">
+                <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="Person.Create"></button>
+                <button es-btn
+                        btn-color="info"
+                        btn-icon="fa fa-list-alt"
+                        ng-show="$selectedItem"
+                        ui-sref="Person.Details({id : $selectedItem.personId })"></button>
+                <button es-btn
+                        btn-color="primary"
+                        btn-icon="fa fa-pencil"
+                        ng-show="$selectedItem"
+                        ui-sref="Person.Edit({id : $selectedItem.personId })"></button>
+                <button es-btn
+                        btn-color="danger"
+                        btn-icon="fa fa-close"
+                        ng-show="$selectedItem"
+                        ui-sref="Person.Delete({id : $selectedItem.personId })"></button>
+            </div>
+        </div>
+        <div class="table-responsive">
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr class="info">
+
+                        <th class="col-xs-1 text-center" style="width: 3.166666665%">
+                            ردیف
+                        </th>
+                        <th grid-sorting="personId" class="col-xs-2 text-center">
+                            شناسه
+                        </th>
+                        <th grid-sorting="title" class="col-xs-2 text-center">
+                            <label>{{'fullName'| translate }}</label>
+                        </th>
+                        <th grid-sorting="idNumber" class="col-xs-2 text-center">
+                            <label>{{'idNumber'| translate }}</label>
+                        </th>
+                        <th grid-sorting="description" class="col-xs-1 text-center">
+                            <label>{{'state'| translate }}</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-if="$items.length == 0">
+                        <td colspan="8">
+                            <h5 class="text-center">رکوردی یافت نشد</h5>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="item in $items" grid-selectable="item">
+                        <td class="text-center" ng-bind="item.$index"></td>
+                        <td ng-bind="item.personId"></td>
+                        <td ng-bind="item.fullName"></td>
+                        <td ng-bind="item.idNumber"></td>
+                        <td ng-bind="item.state"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

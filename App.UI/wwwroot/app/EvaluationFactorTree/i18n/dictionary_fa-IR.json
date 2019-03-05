@@ -1,0 +1,25 @@
+﻿{
+  "evaluationFactor": "معیارهای ارزیابی",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "createaschild": "ایجاد شاخه",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+
+  "evaluationFactorId": "شناسه",
+  "title": "عنوان معیار",
+  "parentID": "معیار پدر",
+  "evaluationFactorType": "نوع معیار ",
+  "evaluationFactorRef": "معیار پدر",
+  "description": "توضیحات",
+  "state": "وضعیت"
+
+
+}

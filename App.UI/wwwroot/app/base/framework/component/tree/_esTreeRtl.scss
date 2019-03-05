@@ -1,0 +1,22 @@
+﻿[dir=rtl] {
+    .es-tree {
+        ul li span[class*="glyphicon-"] {
+            transform: rotateY(180deg);
+        }
+
+        .angular-ui-tree-nodes {
+            margin-right: 7px;
+
+            & .tree {
+                padding-right: 15px;
+                border-right: 1px solid #e3e3e3;
+            }
+
+            .angular-ui-tree-node {
+                .es-classic-node {
+                    padding: 0px 0px 5px 15px;
+                }
+            }
+        }
+    }
+}

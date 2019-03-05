@@ -1,0 +1,116 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-plus"></span>{{'Create'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="ProjectTreeForm" novalidate>
+            <div es-validationsummary="errors">
+            </div>
+            {{create.entity.$data}}
+            111
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="create.entity.$data.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="ProjectTreeForm.title.$error" ng-if="ProjectTreeForm.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="reginalPowerCorpRef" class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectTreeForm.reginalPowerCorpRef.$error" ng-if="ProjectTreeForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <!--<div class="form-group col-md-4">
+                <label for="projectTreeRef" class="control-label required-label">{{'projectTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectTreeRef" autoload="true" method="GET" url='/ProjectTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.$data.projectTreeRef"
+                             datasource="esDropdown.projectTreeRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true"
+                             ng-if="create.entity.$data.projectTreeRef!=0">
+                </es-dropdown>
+                <div ng-messages="ProjectTreeForm.projectTreeRef.$error" ng-if="ProjectTreeForm.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>-->
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+
+            <div class="form-group col-md-4">
+                <label for="levelCode" class="control-label required-label" ng-bind="'levelCode'| translate"></label>
+                <select ng-model="create.entity.$data.level" ng-options="x.value as x.name for x in create.levelCode2" class="form-control" placeholder="{{'levelCode'| translate}}"></select>
+                <!--<input name="levelCode" ng-model="create.entity.levelCode" class="form-control" placeholder="{{'LevelCode'| translate}}" required>-->
+                <div ng-messages="ProjectTreeForm.levelCode.$error" ng-if="ProjectTreeForm.levelCode.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="code" class="control-label required-label">{{'code'| translate }}</label>
+                <input name="code" ng-model="create.entity.$data.code" class="form-control" placeholder="{{'code'| translate}}">
+                <div ng-messages="ProjectTreeForm.code.$error" ng-if="ProjectTreeForm.code.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="istemplate" class="control-label required-label">{{'isTemplate'| translate }}</label>
+                <input name="istemplate" type="checkbox" class="form-control" ng-checked="create.entity.$data.isTemplate" ng-model="create.entity.isTemplate">
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="Description" class="control-label required-label" ng-bind="'Description'| translate"></label>
+                <input name="Description" ng-model="create.entity.$data.description" class="form-control" placeholder="{{'Description'| translate}}">
+                <div ng-messages="ProjectTreeForm.description.$error" ng-if="ProjectTreeForm.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="create.entity.$data"
+                es-ng-post-form-name="ProjectTreeForm"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ProjectTreeForm.$invalid"
+                es-ng-post-url="/ProjectTree/Create"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+
+        <button class="btn btn-default" ui-sref="ProjectTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+
+    </div>
+</div>

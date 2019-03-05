@@ -1,0 +1,26 @@
+﻿{
+  "ReginalPowerCorp": "شرکت های برق منطقه ای",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+  "Name": "نام شرکت",
+  "Description": "توضیحات",
+  "Manager": "نام مدیر عامل",
+  "ManagerMobile": "شماره همراه مدیر عامل",
+  "Tel": "شماره تماس",
+  "Fax": "فکس",
+  "Mail": "ایمیل",
+  "MainAddress": "آدرس اصلی",
+  "SubAddress": "آدرس فرعی",
+  "RegisterCode": "شماره ثبت"
+
+
+
+}

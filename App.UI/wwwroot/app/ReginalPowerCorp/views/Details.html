@@ -1,0 +1,77 @@
+<div class="panel panel-info" es-loading="details.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title"><span class="fa fa-list-alt"></span> {{'Details'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form>
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'Name'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.title"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'Manager'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.manager"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'ManagerMobile'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.managerMobile"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'Tel'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.tel"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'Fax'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.fax"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'Mail'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.mail"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'MainAddress'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.mainAddress"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'SubAddress'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.subAddress"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'RegisterCode'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.registerCode"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'Description'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.description"></span>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-default" ui-sref="ReginalPowerCorp.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>
+
+
+

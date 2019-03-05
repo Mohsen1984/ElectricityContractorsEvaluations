@@ -1,0 +1,149 @@
+﻿<div class="panel panel-primary esAffix" es-loading="edit.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-pencil"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body" style="position:relative">
+        <form name="PersonForm" novalidate>
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="edit.ds.$data.evFormTemplateId" />
+
+
+
+
+
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="edit.ds.$data.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="EvaluationPeriodForm.title.$error" ng-if="EvaluationPeriodForm.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="evaluatorRoleRef" class="control-label required-label">{{'evaluatorRoleRef'| translate }}</label>
+                <es-datasource name="esDropdown.evaluatorRole" autoload="true" method="GET" url='/RoleOrg/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.evaluatorRoleRef"
+                             datasource="esDropdown.evaluatorRole"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             >
+                </es-dropdown>
+                <div ng-messages="EVFormTemplateForm.reginalPowerCorpRef.$error" ng-if="ProjectTreeForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="evaluatedRoleRef" class="control-label required-label">{{'evaluatedRoleRef'| translate }}</label>
+                <es-datasource name="esDropdown.evaluatedRole" autoload="true" method="GET" url='/RoleOrg/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.evaluatedRoleRef"
+                             datasource="esDropdown.evaluatedRole"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             >
+                </es-dropdown>
+                <div ng-messages="EVFormTemplateForm.reginalPowerCorpRef.$error" ng-if="EVFormTemplateForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="reginalPowerCorpRef" class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.reginalPowerCorp" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.reginalPowerCorp"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             >
+                </es-dropdown>
+                <div ng-messages="EVFormTemplateForm.reginalPowerCorpRef.$error" ng-if="ProjectTreeForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="projectTreeRef" class="control-label required-label">{{'projectTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectTree" autoload="true" method="GET" url='/ProjectTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.projectTreeRef"
+                             datasource="esDropdown.projectTree"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             >
+                </es-dropdown>
+                <div ng-messages="EVFormTemplateForm.projectTreeRef.$error" ng-if="ProjectTreeForm.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="evaluationPeriodRef" class="control-label required-label">{{'evaluationPeriodRef'| translate }}</label>
+                <es-datasource name="esDropdown.evaluationPeriod" autoload="true" method="GET" url='/EvaluationPeriod/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.evaluationPeriodRef"
+                             datasource="esDropdown.evaluationPeriod"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             >
+                </es-dropdown>
+                <div ng-messages="EVFormTemplateForm.evaluationPeriodRef.$error" ng-if="ProjectTreeForm.evaluationPeriodRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="description" ng-model="edit.ds.$data.description" class="form-control" placeholder="{{'description'| translate}}">
+                <div ng-messages="EVFormTemplateForm.description.$error" ng-if="EVFormTemplateForm.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+
+
+
+
+
+
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                btn-icon="fa fa-pencil"
+                es-ng-post
+                post-object="edit.ds.$data"
+                es-ng-post-form-name="PersonForm"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="PersonForm.$invalid"
+                es-ng-post-url="/EVFormTemplate/Edit"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-pencil"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="EVFormTemplate.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="panel panel-primary esAffix" es-loading="edit.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-pencil"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body" style="position:relative">
+        <form name="ReginalPowerCorpForm" novalidate>
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="edit.ds.$data.reginalPowerCorpId" />
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label" ng-bind="'Name'| translate"></label>
+                <input name="title" ng-model="edit.ds.$data.title" class="form-control" placeholder="{{'Name'| translate}}" required>
+                <div ng-messages="ReginalPowerCorpForm.title.$error" ng-if="ReginalPowerCorpForm.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="manager" class="control-label required-label">{{'Manager'| translate }}</label>
+                <input name="manager" ng-model="edit.ds.$data.manager" class="form-control" placeholder="{{'Manager'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.manager.$error" ng-if="ReginalPowerCorpForm.manager.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="managerMobile" class="control-label required-label">{{'ManagerMobile'| translate }}</label>
+                <input name="managerMobile" ng-model="edit.ds.$data.managerMobile" class="form-control" placeholder="{{'ManagerMobile'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.managerMobile.$error" ng-if="ReginalPowerCorpForm.managerMobile.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="tel" class="control-label required-label">{{'Tel'| translate }}</label>
+                <input name="tel" ng-model="edit.ds.$data.tel" class="form-control" placeholder="{{'Tel'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.tel.$error" ng-if="ReginalPowerCorpForm.tel.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="fax" class="control-label required-label">{{'Fax'| translate }}</label>
+                <input name="fax" ng-model="edit.ds.$data.fax" class="form-control" placeholder="{{'Fax'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.fax.$error" ng-if="ReginalPowerCorpForm.fax.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="mail" class="control-label required-label">{{'Mail'| translate }}</label>
+                <input name="mail" ng-model="edit.ds.$data.mail" class="form-control" placeholder="{{'Mail'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.mail.$error" ng-if="ReginalPowerCorpForm.mail.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="mainAddress" class="control-label required-label">{{'MainAddress'| translate }}</label>
+                <input name="mainAddress" ng-model="edit.ds.$data.mainAddress" class="form-control" placeholder="{{'MainAddress'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.mainAddress.$error" ng-if="ReginalPowerCorpForm.mainAddress.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="subAddress" class="control-label required-label">{{'SubAddress'| translate }}</label>
+                <input name="subAddress" ng-model="edit.ds.$data.subAddress" class="form-control" placeholder="{{'SubAddress'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.subAddress.$error" ng-if="ReginalPowerCorpForm.subAddress.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="registerCode" class="control-label required-label">{{'RegisterCode'| translate }}</label>
+                <input name="registerCode" ng-model="edit.ds.$data.registerCode" class="form-control" placeholder="{{'RegisterCode'| translate}}">
+                <div ng-messages="ReginalPowerCorpForm.registerCode.$error" ng-if="ReginalPowerCorpForm.registerCode.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="description" class="control-label required-label" ng-bind="'Description'| translate"></label>
+                <input name="description" ng-model="edit.ds.$data.description" class="form-control" placeholder="{{'Description' | translate}}" required>
+                <div ng-messages="ReginalPowerCorpForm.description.$error" ng-if="ReginalPowerCorpForm.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                btn-icon="fa fa-pencil"
+                es-ng-post
+                post-object="edit.ds.$data"
+                es-ng-post-form-name="ReginalPowerCorpForm"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ReginalPowerCorpForm.$invalid"
+                es-ng-post-url="/ReginalPowerCorp/Edit"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-pencil"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ReginalPowerCorp.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

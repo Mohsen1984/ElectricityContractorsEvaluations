@@ -1,0 +1,632 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20190109234823_14.cs" />
+    <Compile Remove="Migrations\20190109234823_14.Designer.cs" />
+    <Compile Remove="Migrations\20190110002306_16.cs" />
+    <Compile Remove="Migrations\20190110002306_16.Designer.cs" />
+    <Compile Remove="Migrations\20190110005014_17.cs" />
+    <Compile Remove="Migrations\20190110005014_17.Designer.cs" />
+    <Compile Remove="Migrations\20190128213612_26.cs" />
+    <Compile Remove="Migrations\20190128213612_26.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.6" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.5.3" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.5.3" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.4.0" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.5.3" />
+    <PackageReference Include="Z.EntityFramework.Classic.Community" Version="7.0.26" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\HomeResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HomeResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\RegisterResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RegisterResource.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\SharedResource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SharedResource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\HomeResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HomeResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\RegisterResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\SharedResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SharedResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\EvaluationPeriod\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EvaluationProject\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EVFormTemplate\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EVForm\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\OUTree\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ExternalOrgType\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ExternalOrganization\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\EvaluationFactorTree\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ContractInfo\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ProjectInfo\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Person\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ProjectPersone\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ProjectTree\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ReginalPowerCorp\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\RoleOrg\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ServiceTree\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\ServiceTemplateTree\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\TaskList\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\lib\angular-bootstrap\ui-bootstrap-csp.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-bootstrap\ui-bootstrap-tpls.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-bootstrap\ui-bootstrap-tpls.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-bootstrap\ui-bootstrap.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-bootstrap\ui-bootstrap.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-cookies\angular-cookies.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-cookies\angular-cookies.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-cookies\angular-cookies.min.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-mask\ngMask.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-mask\ngMask.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-mask\ngMask.min.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-sanitize\angular-sanitize.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-sanitize\angular-sanitize.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-sanitize\angular-sanitize.min.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-translate-loader-static-files\angular-translate-loader-static-files.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-translate-loader-static-files\angular-translate-loader-static-files.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-translate\angular-translate.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-translate\angular-translate.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-router\angular-ui-router.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-router\angular-ui-router.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-router\angular-ui-router.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-router\angular-ui-router.min.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-select\select.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-select\select.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-select\select.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-select\select.min.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-select\select.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angular-ui-select\select.min.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angularjs-captcha\angularjs-captcha.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angularjs-captcha\angularjs-captcha.min.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angularjs\angular.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angularjs\angular.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angularjs\angular.min.js.gzip">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\angularjs\angular.min.js.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-flipped.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-flipped.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-flipped.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-rtl.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-rtl.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-rtl.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\js\holder.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\js\html5shiv.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\js\jquery.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap-rtl\dist\js\respond.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\js\bootstrap.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\dist\js\npm.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fa-brands.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fa-brands.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fa-regular.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fa-regular.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fa-solid.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fa-solid.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fontawesome-all.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fontawesome-all.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fontawesome.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\css\fontawesome.min.css">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\fa-brands.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\fa-regular.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\fa-solid.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\fontawesome.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_animated.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_bordered-pulled.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_core.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_fixed-width.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_icons.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_larger.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_list.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_mixins.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_rotated-flipped.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_screen-reader.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_stacked.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\less\_variables.less">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\fa-brands.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\fa-regular.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\fa-solid.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\fontawesome.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_animated.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_bordered-pulled.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_core.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_fixed-width.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_icons.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_larger.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_list.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_mixins.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_rotated-flipped.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_screen-reader.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_stacked.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\scss\_variables.scss">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.eot">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.svg">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.ttf">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.woff">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.woff2">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery\jquery.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery\jquery.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery\jquery.min.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery\jquery.slim.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery\jquery.slim.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\jquery\jquery.slim.min.map">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\DesignEvaluationForm\Index.cshtml" />
+    <None Include="wwwroot\app\DesignEvaluationForm\app.js" />
+    <None Include="wwwroot\css\site.scss" />
+    <None Include="wwwroot\css\site_ltr.scss" />
+    <None Include="wwwroot\css\site_rtl.scss" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\site.min.js" />
+    <None Include="wwwroot\lib\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <None Include="wwwroot\lib\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <None Include="wwwroot\lib\angular-bootstrap\ui-bootstrap.js" />
+    <None Include="wwwroot\lib\angular-bootstrap\ui-bootstrap.min.js" />
+    <None Include="wwwroot\lib\angular-cookies\angular-cookies.js" />
+    <None Include="wwwroot\lib\angular-cookies\angular-cookies.min.js" />
+    <None Include="wwwroot\lib\angular-cookies\angular-cookies.min.js.map" />
+    <None Include="wwwroot\lib\angular-mask\ngMask.js" />
+    <None Include="wwwroot\lib\angular-mask\ngMask.min.js" />
+    <None Include="wwwroot\lib\angular-mask\ngMask.min.map" />
+    <None Include="wwwroot\lib\angular-messages\angular-messages.js" />
+    <None Include="wwwroot\lib\angular-sanitize\angular-sanitize.js" />
+    <None Include="wwwroot\lib\angular-sanitize\angular-sanitize.min.js" />
+    <None Include="wwwroot\lib\angular-sanitize\angular-sanitize.min.js.map" />
+    <None Include="wwwroot\lib\angular-translate-loader-static-files\angular-translate-loader-static-files.js" />
+    <None Include="wwwroot\lib\angular-translate-loader-static-files\angular-translate-loader-static-files.min.js" />
+    <None Include="wwwroot\lib\angular-translate\angular-translate.js" />
+    <None Include="wwwroot\lib\angular-translate\angular-translate.min.js" />
+    <None Include="wwwroot\lib\angular-ui-router\angular-ui-router.js" />
+    <None Include="wwwroot\lib\angular-ui-router\angular-ui-router.js.map" />
+    <None Include="wwwroot\lib\angular-ui-router\angular-ui-router.min.js" />
+    <None Include="wwwroot\lib\angular-ui-router\angular-ui-router.min.js.map" />
+    <None Include="wwwroot\lib\angular-ui-select\select.js" />
+    <None Include="wwwroot\lib\angular-ui-select\select.min.css.map" />
+    <None Include="wwwroot\lib\angular-ui-select\select.min.js" />
+    <None Include="wwwroot\lib\angular-ui-select\select.min.js.map" />
+    <None Include="wwwroot\lib\angularjs-captcha\angularjs-captcha.min.js" />
+    <None Include="wwwroot\lib\angularjs-captcha\angularjs-captcha.min.js.map" />
+    <None Include="wwwroot\lib\angularjs\angular.js" />
+    <None Include="wwwroot\lib\angularjs\angular.min.js" />
+    <None Include="wwwroot\lib\angularjs\angular.min.js.gzip" />
+    <None Include="wwwroot\lib\angularjs\angular.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-flipped.css.map" />
+    <None Include="wwwroot\lib\bootstrap-rtl\dist\css\bootstrap-rtl.css.map" />
+    <None Include="wwwroot\lib\bootstrap-rtl\dist\js\holder.js" />
+    <None Include="wwwroot\lib\bootstrap-rtl\dist\js\html5shiv.js" />
+    <None Include="wwwroot\lib\bootstrap-rtl\dist\js\jquery.min.js" />
+    <None Include="wwwroot\lib\bootstrap-rtl\dist\js\respond.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\lib\components-font-awesome\less\fa-brands.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\fa-regular.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\fa-solid.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\fontawesome.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_animated.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_bordered-pulled.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_core.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_fixed-width.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_icons.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_larger.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_list.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_mixins.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_rotated-flipped.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_screen-reader.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_stacked.less" />
+    <None Include="wwwroot\lib\components-font-awesome\less\_variables.less" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\fa-brands.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\fa-regular.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\fa-solid.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\fontawesome.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_animated.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_screen-reader.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\lib\components-font-awesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\lib\components-font-awesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\lib\components-font-awesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\lib\jquery\jquery.js" />
+    <None Include="wwwroot\lib\jquery\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\jquery.min.map" />
+    <None Include="wwwroot\lib\jquery\jquery.slim.js" />
+    <None Include="wwwroot\lib\jquery\jquery.slim.min.js" />
+    <None Include="wwwroot\lib\jquery\jquery.slim.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\app\ServiceTemplateTree\" />
+    <Folder Include="wwwroot\app\ProjectPersone\" />
+  </ItemGroup>
+
+</Project>

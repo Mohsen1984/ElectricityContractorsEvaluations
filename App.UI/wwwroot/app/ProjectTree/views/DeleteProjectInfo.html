@@ -1,0 +1,106 @@
+﻿<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title"><span class="fa fa-close"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="ProjectInfo" method="post">
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="deleteprojectinfo.ds.$data.projectId" />
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'title'| translate"></label>
+                <span class="form-control" ng-bind="deleteprojectinfo.ds.$data.title"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'projectNo'| translate"></label>
+                <span class="form-control" ng-bind="deleteprojectinfo.ds.$data.projectNo"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <div style="visibility:hidden"> {{create.entity.projectTreeRef=GprojectId}}</div>
+                <label class="control-label required-label">{{'projectTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectTreeRef" autoload="true" method="GET" url='/ProjectTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="editprojectinfo.ds.$data.projectTreeRef"
+                             datasource="esDropdown.projectTreeRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ContractInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'serviceTemplateTreeRef'| translate }}</label>
+                <div style="visibility:hidden"> {{create.entity.serviceTemplateTreeRef=GserviceTreeTempId}}</div>
+                <es-datasource name="esDropdown.serviceTemplateTreeRef" autoload="true" method="GET" url='/ServiceTemplateTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.serviceTemplateTreeRef"
+                             datasource="esDropdown.serviceTemplateTreeRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ContractInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="deleteprojectinfo.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ProjectInfo.reginalPowerCorpRef.$error" ng-if="ProjectInfo.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'description'| translate"></label>
+                <span class="form-control" ng-bind="deleteprojectinfo.ds.$data.description"></span>
+            </div>
+            <div class="clearfix"></div>
+            <p class="text-danger" ng-bind="'DeleteComfirmation'| translate"></p>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="deleteprojectinfo.ds.$data"
+                es-ng-post-form-name="ProjectInfo"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ProjectInfo.$invalid"
+                es-ng-post-url="/ProjectInfo/Delete"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ProjectTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+﻿<ul class="pagination pagination-sm">
+    <li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}">
+        <a ng-click="selectPage(1)" title="First Page">
+            <span class="glyphicon glyphicon-fast-backward"></span>
+        </a>
+    </li>
+    <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+        <a ng-click="selectPage(page - 1)" title="Previous Page">
+            <span class="glyphicon glyphicon-triangle-left"></span>
+        </a>
+    </li>
+    <li ng-repeat="page in pages track by $index" ng-class="{active: page.active}">
+        <a ng-click="selectPage(page.number)">
+            <span class="page-number">{{page.text}}</span>
+        </a>
+    </li>
+    <li ng-if="directionLinks" ng-class="{disabled: noNext()}">
+        <a ng-click="selectPage(page + 1)" title="Next Page">
+            <span class="glyphicon glyphicon-triangle-right"></span>
+        </a>
+    </li>
+    <li ng-if="boundaryLinks" ng-class="{disabled: noNext()}">
+        <a ng-click="selectPage(totalPages)" title="Last Page">
+            <span class="glyphicon glyphicon-fast-forward"></span>
+        </a>
+    </li>
+</ul>

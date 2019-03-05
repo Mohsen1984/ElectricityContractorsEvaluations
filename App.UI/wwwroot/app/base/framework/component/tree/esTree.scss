@@ -1,0 +1,23 @@
+﻿@import url('./lib/angular-ui-tree.min.css');
+.es-tree {
+    .angular-ui-tree-nodes {
+        margin-left: 6px;
+
+        & .tree {
+            padding-left: 15px;
+            border-left : 1px solid #e3e3e3;
+        }
+
+        .angular-ui-tree-node {
+            .es-classic-node {
+                padding: 0px 15px 5px 0px;
+            }
+
+            & span.node-no-child {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+@import '_esTreeRtl';

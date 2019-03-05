@@ -1,0 +1,48 @@
+﻿@import url('./lib/select.min.css');
+
+.ui-select-container.ui-select-bootstrap {
+    padding-bottom: 1px;
+}
+div.ui-select-multiple.ul.ui-select-choices {
+    visibility: hidden;
+}
+
+.form-control.ui-select-container.ui-select-multiple {
+    min-height: 34px;
+    border-radius: 0;
+}
+
+span.ui-select-match-text span {
+    max-height: 19px;
+    max-width: 0;
+}
+
+span.ui-select-match-text {
+    max-width: 0;
+}
+
+div.ui-select-multiple input.ui-select-search {
+    width: auto !important;
+}
+span.ui-select-match-text span {
+    text-align: right;
+}
+
+.ui-select-bootstrap .ui-select-toggle > .caret {
+    right: initial;
+    left: 10px; /* or any other value - it should be the same as the original right value */
+}
+
+
+.ui-select-bootstrap > .ui-select-match > .btn {
+    text-align: right !important;
+    direction: rtl;
+}
+
+
+.ui-select-bootstrap > .ui-select-match > .btn > span.pull-left {
+    float: right !important;
+}
+.ui-select-bootstrap ~ .input-group-btn > .btn {
+    border-radius: 0px !important;
+}

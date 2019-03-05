@@ -1,0 +1,18 @@
+﻿<div class="es-classic-node">
+    <span ng-if="dataMode == 'lazy'&& ( !this.$modelValue.loadState  || this.$modelValue.loadState == 1)" class="glyphicon"
+          ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed,'node-no-child': (!node.hasChild)}"
+          ng-click="toggleChildren(this);">
+    </span>
+    <span ng-if="dataMode == 'lazy' && ( this.$modelValue.loadState == 2)" 
+          class="fa fa-refresh fa-spin"
+          ng-click="toggleChildren(this);">
+    </span>
+    <span ng-if="dataMode != 'lazy'" class="glyphicon"
+          ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed,'node-no-child': (!node.nodes)}"
+          ng-click="toggleChildren(this);">
+    </span>
+    <span  ng-include="nodeTemplate"></span>
+</div>
+<ul ng-if="node.nodes" ui-tree-nodes="" ng-model="node.nodes" class="nav nav-list tree" ng-class="{hidden: collapsed}">
+    <li ng-repeat="node in node.nodes" ui-tree-node ng-include="templatePath"></li>
+</ul>

@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/site_ltr.css",
+    "inputFile": "wwwroot/css/site_ltr.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/site_rtl.css",
+    "inputFile": "wwwroot/css/site_rtl.scss"
+  },
+  {
+    "outputFile": "wwwroot/lib/angular-messages/angular-messages.es5.js",
+    "inputFile": "wwwroot/lib/angular-messages/angular-messages.js"
+  },
+  {
+    "outputFile": "wwwroot/app/base/framework/component/grid/esGridRtl.css",
+    "inputFile": "wwwroot/app/base/framework/component/grid/esGridRtl.scss"
+  },
+  {
+    "outputFile": "wwwroot/app/base/framework/component/grid/esGridLtr.css",
+    "inputFile": "wwwroot/app/base/framework/component/grid/esGridLtr.scss"
+  }
+]

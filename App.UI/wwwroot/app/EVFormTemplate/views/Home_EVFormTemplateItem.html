@@ -1,0 +1,98 @@
+﻿<div class="container-fluid">
+    <div class="well well-sm es-toolbar">
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="es-toolbar-title es-title" ng-bind="'PersonNavigationList' | translate"></label>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+    </div>
+ 
+    <div es-grid
+         grid-datasource="homed.ds"
+         grid-paging="true"
+         grid-data="remote"
+         class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <!--<div ng-include src="'app/EVFormTemplate/views/Search.html'" ng-controller="SearchController as search" include-replace></div>-->
+            </div>
+            <div class="col-sm-6">
+                <button es-btn btn-color="danger" btn-icon="fa fa-undo" ui-sref="EVFormTemplate.List"></button>
+                <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="EVFormTemplate.CreateD"></button>
+
+                <button es-btn
+                        btn-color="info"
+                        btn-icon="fa fa-list-alt"
+                        ng-show="$selectedItem"
+                        ui-sref="EVFormTemplate.Details({id : $selectedItem.periodId })"></button>
+                <button es-btn
+                        btn-color="primary"
+                        btn-icon="fa fa-pencil"
+                        ng-show="$selectedItem"
+                        ui-sref="EVFormTemplate.Edit({id : $selectedItem.periodId })"></button>
+                <button es-btn
+                        btn-color="danger"
+                        btn-icon="fa fa-close"
+                        ng-show="$selectedItem"
+                        ui-sref="EVFormTemplate.Delete({id : $selectedItem.periodId })"></button>
+            </div>
+        </div>
+        <div>
+          
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-readonly="true" ng-model="homed.ds.$data.items[0].evFormTemplate.title" class="form-control" placeholder="{{'title'| translate}}" required>
+           
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+        </div>
+
+        
+        <div class="table-responsive">
+
+            <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr class="info">
+
+                        <th class="col-xs-1 text-center" style="width: 3.166666665%">
+                            ردیف
+                        </th>
+                        <th grid-sorting="evFormTemplateItemId" class="col-xs-2 text-center">
+                            <label>{{'evFormTemplateItemId'| translate }}</label>
+                        </th>
+
+
+                        <th grid-sorting="evFormTemplateRef" class="col-xs-2 text-center">
+                            <label>{{'evFormTemplateRef'| translate }}</label>
+                        </th>
+                        <th grid-sorting="evaluationFactorRef" class="col-xs-2 text-center">
+                            <label>{{'evaluationFactorRef'| translate }}</label>
+                        </th>
+               
+                        <th grid-sorting="state" class="col-xs-1 text-center">
+                            <label>{{'state'| translate }}</label>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr ng-if="$items.length == 0">
+                        <td colspan="8">
+                            <h5 class="text-center">رکوردی یافت نشد</h5>
+                        </td>
+                    </tr>
+                    <tr ng-repeat="item in $items" grid-selectable="item">
+                        <td class="text-center" ng-bind="item.$index"></td>
+                        <td ng-bind="item.evFormTemplateItemId"></td>
+                        <td ng-bind="item.evFormTemplateRef"></td>
+                        <td ng-bind="item.evaluationFactor.title"></td>
+                        <td ng-bind="item.state"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

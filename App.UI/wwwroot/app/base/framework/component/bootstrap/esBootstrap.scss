@@ -1,0 +1,16 @@
+﻿@import "esBootstrapRtl";
+.well {
+    border-radius: 0;
+}
+
+.panel {
+    border-radius: 0;
+
+    .panel-heading {
+        border-radius: 0;
+    }
+}
+
+.form-control {
+    border-radius: 0px;
+}

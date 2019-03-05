@@ -1,0 +1,20 @@
+﻿{
+  "Cancel": "Cancel",
+  "Search": "Search",
+  "In Progress": "In Progress",
+  "Done": "Done",
+  "New": "New",
+  "NoRecordFound": "NoRecordFound",
+  "Row": "Row",
+  "Title": "Title",
+  "DueDate": "DueDate",
+  "Priority": "Priority",
+  "CreatedBy": "CreatedBy",
+  "CreatedDate": "CreatedDate",
+  "FormLink": "FormLink",
+  "Description": "Description",
+  "Status": "Status",
+  "Actions": "Actions",
+  "Choose an Action": "Choose an Action",
+  "Link": "Link"
+}

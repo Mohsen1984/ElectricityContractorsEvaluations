@@ -1,0 +1,90 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-plus"></span>{{'Create'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="OUTree" novalidate>
+            <div es-validationsummary="errors">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="create.entity.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="OUTree.title.$error" ng-if="OUTree.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="code" class="control-label required-label">{{'code'| translate }}</label>
+                <input name="code" ng-model="create.entity.code" class="form-control" placeholder="{{'code'| translate}}" required>
+                <div ng-messages="OUTree.code.$error" ng-if="OUTree.code.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'oUTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.OUTree" autoload="true" method="GET" url='/OUTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.oUTreeRef"
+                             datasource="esDropdown.OUTree"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="OUTree.reginalPowerCorpRef.$error" ng-if="OUTree.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="OUTree.reginalPowerCorpRef.$error" ng-if="OUTree.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="description" ng-model="create.entity.description" class="form-control" placeholder="{{'description'| translate}}" required>
+                <div ng-messages="OUTree.description.$error" ng-if="OUTree.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="create.entity"
+                es-ng-post-form-name="OUTree"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="OUTree.$invalid"
+                es-ng-post-url="/OUTree/Create"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="OUTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

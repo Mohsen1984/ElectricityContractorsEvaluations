@@ -1,0 +1,27 @@
+﻿{
+  "ServiceTemplateTree": "قالب خدمات پروژه ها",
+  "TreeComponent": "درختواره",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "createaschild": "ایجاد شاخه",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+  "serviceTemplateTreeId": "شناسه",
+  "title": "عنوان",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "serviceTemplateTreeRef": "پدر",
+  "projectTreeRef": "شناسه درخت پروژه",
+  "level": "نوع شاخه درختواه",
+  "EvalType": "نوع نقش",
+  "code": "کد",
+  "levelCode": "کد شاخه",
+  "state": "وضعیت",
+  "Description": "توضیحات"
+
+}

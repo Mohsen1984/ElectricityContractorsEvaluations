@@ -1,0 +1,88 @@
+﻿<div class="panel panel-info" es-loading="details.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title"><span class="fa fa-list-alt"></span> {{'Details'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form>
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'title'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.title"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="reginalPowerCorpRef" class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="details.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectTreeForm.reginalPowerCorpRef.$error" ng-if="ProjectTreeForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="projectTreeRef" class="control-label required-label">{{'projectTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectTreeRef" autoload="true" method="GET" url='/ProjectTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="details.ds.$data.projectTreeRef"
+                             datasource="esDropdown.projectTreeRef"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectTreeForm.projectTreeRef.$error" ng-if="ProjectTreeForm.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="levelCode" class="control-label required-label" ng-bind="'levelCode'| translate"></label>
+                <select ng-model="create.entity.levelCode" class="form-control" placeholder="{{'levelCode'| translate}}">
+                    <option ng-repeat="x in create.levelCode2" value="{{x.value}}">{{x.name}}</option>
+                </select>
+                <!--<input name="levelCode" ng-model="create.entity.levelCode" class="form-control" placeholder="{{'LevelCode'| translate}}" required>-->
+                <div ng-messages="ProjectTreeForm.levelCode.$error" ng-if="ProjectTreeForm.levelCode.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'code'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.code"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'description'| translate"></label>
+                <span class="form-control" ng-bind="details.ds.$data.description"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="state" class="control-label required-label" ng-bind="'State'| translate"></label>
+                <input name="state" type="checkbox" ng-checked="details.ds.$data.state" ng-bind="details.ds.$data.state" placeholder="{{'State' | translate}}">
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-default" ui-sref="ProjectTree.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>
+
+
+

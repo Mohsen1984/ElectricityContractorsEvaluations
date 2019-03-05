@@ -1,0 +1,55 @@
+﻿<div class="container-fluid">
+    <div class="well well-sm es-toolbar">
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="es-toolbar-title es-title" ng-bind="'evaluationFactor' | translate"></label>
+            </div>
+            <div class="col-sm-2">
+
+            </div>
+        </div>
+    </div>
+   
+    <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="EvaluationFactorTree.Create({EvaluationFactorRef :null })"></button>
+    <div class="col-lg-12 col-md-12" style="border:1px solid;height:400px;overflow:auto;">
+        <es-datasource name="home.entityTreeListDs"
+                       autoload="true"
+                       method="GET"
+                       url='/EvaluationFactorTree/EntityTreeNodesEvaluationFactor'>
+        </es-datasource>
+        <div es-tree
+             autoload="false"
+             tree-data="lazy"
+             tree-datasource="home.entityTreeListDs"
+             tree-node-template="lazyNodeTemplate.html">
+        </div>
+        <script type="text/ng-template" id="lazyNodeTemplate.html">
+            <i ng-if="node.hasChild" class="fa fa-folder"></i>
+            <i ng-if="!node.hasChild" class="fa fa-file"></i>
+            <span>{{node.text}}--{{node.level}}</span>
+            <!--ng-click="parent.home.f(node.)-->
+            <!--<button ng-if="node.level==1 " title="افزودن پروژه" class="btn btn-success" ui-sref="ProjectTree.Create({parentId : node.id,level: '1' })">
+                <i class="fa fa-cogs"></i>
+
+            </button>
+
+            <button es-btn title="ویرایش" btn-color="primary" btn-icon="fa fa-pencil" ui-sref="ProjectTree.Edit({id :node.id })"></button>-->
+            <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="EvaluationFactorTree.Create({EvaluationFactorRef : node.id })"></button>
+            <button es-btn
+                    btn-color="info"
+                    btn-icon="fa fa-list-alt"
+                    ui-sref="EvaluationFactorTree.Details({id : node.id })"></button>
+            <button es-btn
+                    btn-color="primary"
+                    btn-icon="fa fa-pencil"
+                    ui-sref="EvaluationFactorTree.Edit({id :node.id})"></button>
+            <button es-btn
+                    btn-color="danger"
+                    btn-icon="fa fa-close"
+                    ui-sref="EvaluationFactorTree.Delete({id : node.id })"></button>
+
+
+        </script>
+    </div>
+
+</div>

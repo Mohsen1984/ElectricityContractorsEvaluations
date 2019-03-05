@@ -1,0 +1,90 @@
+﻿<div class="container-fluid">
+    <div class="panel">
+        <div class="panel-body">
+            <div ng-repeat="box in cartable.Boxes"
+                 class="col- col-lg-3 col-md-6 col-sm-6 col-xs-12 boxContainer"
+                 ng-click="cartable.boxClick(box);"
+                 name="box{{$index}}">
+                <div class="{{box.boxClass}}" ng-class="{'activeBox' : box.isActive}">
+                    <p><i  ng-class="box.isActive ? 'fa-check-square-o':'fa-square-o'" class="fa"></i> {{box.title | translate}}</p>
+                    <p ng-bind="box.number"></p><i class="boxIcon fa" ng-class="box.icon"></i>
+                </div>
+            </div>
+            <p class="clearfix"></p>
+            <div es-grid
+                 grid-datasource="cartable.GridDs"
+                 grid-paging="true"
+                 grid-data="remote"
+                 class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-xs-12">
+                        <div ng-include src="'app/Cartable/views/Search.html'" include-replace></div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                            <tr class="info">
+                                <th class="col-xs-1 text-center" style="width: 3.166666665%" ng-bind="'Row' | translate">
+                                </th>
+                                <th grid-sorting="Title" width="100" ng-bind="'Title' | translate">
+                                </th>
+                                <th grid-sorting="DueDate" width="100" ng-bind="'DueDate' | translate">
+                                </th>
+                                <th grid-sorting="Priority" ng-bind="'Priority' | translate">
+                                </th>
+                                <th grid-sorting="CreatedBy" ng-bind="'CreatedBy' | translate">
+                                </th>
+                                <th grid-sorting="CreatedDate" width="100" ng-bind="'CreatedDate' | translate">
+                                </th>
+                                <th grid-sorting="FormLink" ng-bind="'FormLink' | translate">
+                                </th>
+                                <th grid-sorting="Description" ng-bind="'Description' | translate">
+                                </th>
+                                <th grid-sorting="Status" ng-bind="'Status' | translate">
+                                </th>
+                                <th grid-sorting="Actions" ng-bind="'Actions' | translate">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="$items.length == 0">
+                                <td colspan="19">
+                                    <h5 class="text-center" ng-bind="'NoRecordFound' | translate"></h5>
+                                </td>
+                            </tr>
+                            <tr ng-hide="true" ng-bind="cartable.actionPlaceholder = cartable.getPlaceholderTranslated('Choose an Action'| translate)"></tr>
+                            <tr ng-repeat="item in $items" grid-selectable="item">
+                                <td class="text-center" ng-bind="item.$index"></td>
+                                <td ng-bind="item.title | translate"></td>
+                                <td ng-bind="item.dueDate"></td>
+                                <td ng-bind="item.priority"></td>
+                                <td ng-bind="item.createdBy"></td>
+                                <td ng-bind="item.createdDate"></td>
+                                <td>
+                                    <a href="{{item.formLink}}">{{"Link" | translate}}</a>
+                                </td>
+                                <td ng-bind="item.description"></td>
+                                <td style="text-align:center">
+                                    <img ng-if="item.status.status == 'Not Started'" src="/app/Cartable/img/blueCircle.png" alt="{{item.status.translatedStatus}}" width="20" height="20" />
+                                    <img ng-if="item.status.status == 'Completed'" src="/app/Cartable/img/greenCircle.png" alt="{{item.status.translatedStatus}}" width="20" height="20" />
+                                    <img ng-if="item.status.status == 'In Progress'" src="/app/Cartable/img/yellowCircle.png" alt="{{item.status.translatedStatus}}" width="20" height="20" />
+                                </td>
+                                <td>
+                                    <ui-select ng-model="item.selected" on-select="cartable.action($item,item.selected)" style="position:relative;min-width:200px !important">
+                                        <ui-select-match placeholder="{{cartable.actionPlaceholder}}">
+                                            <span ng-bind="$select.selected.translatedTitle"></span>
+                                        </ui-select-match>
+                                        <ui-select-choices repeat="action.link as action in item.actions | filter: $select.search track by action.id">
+                                            <span><i class="fa" ng-class="action.icon"></i> <span ng-bind="action.translatedTitle"></span></span>
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

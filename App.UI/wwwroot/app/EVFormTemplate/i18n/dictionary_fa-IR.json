@@ -1,0 +1,40 @@
+﻿{
+  "PersonNavigationList": "دوره ارزیابی ",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+
+
+  "evFormTemplateId": "شناسه",
+  "title": "عنوان قالب فرم ارزیابی",
+  "evaluatorRoleRef": "نقش ارزیاب",
+  "evaluatedRoleRef": "نقش ارزیابی شونده",
+  "projectTreeRef": " پروژه ه مورد ارزیابی",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "evaluationPeriodRef": "دوره ارزیابی",
+
+
+
+  "evFormTemplateItemId": "شناسه",
+  "evFormTemplateRef": "قالب فرم ارزیابی",
+  "evaluationFactorRef": " معیار ارزیابی",
+
+
+
+
+
+  "description": "توضیحات",
+  "state": "وضعیت"
+
+
+
+
+}

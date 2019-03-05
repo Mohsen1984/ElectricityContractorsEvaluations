@@ -1,0 +1,111 @@
+﻿<div class="panel panel-danger">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title"><span class="fa fa-close"></span>{{'Edit'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="ExternalOrganization" method="post">
+            <div es-ng-validationsummary="errors">
+            </div>
+            <input type="hidden" ng-model="delete.ds.$data.externalOrganizationId" />
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'title'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.title"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="ExternalOrgTypeRef" class="control-label required-label">{{'externalOrgTypeRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ExternalOrgType/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="delete.ds.$data.externalOrgTypeRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ExternalOrganization.ExternalOrgTypeRef.$error" ng-if="ExternalOrganization.ExternalOrgTypeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'manager'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.manager"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'managerMobile'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.managerMobile"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'tel'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.tel"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'fax'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.fax"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'mail'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.mail"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'mainAddress'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.mainAddress"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'subAddress'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.subAddress"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'registerCode'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.registerCode"></span>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label" ng-bind="'description'| translate"></label>
+                <span class="form-control" ng-bind="delete.ds.$data.description"></span>
+            </div>
+
+
+            <div class="clearfix"></div>
+            <p class="text-danger" ng-bind="'DeleteComfirmation'| translate"></p>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="delete.ds.$data"
+                es-ng-post-form-name="ExternalOrganization"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ExternalOrganization.$invalid"
+                es-ng-post-url="/ExternalOrganization/Delete"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ReginalPowerCorp.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

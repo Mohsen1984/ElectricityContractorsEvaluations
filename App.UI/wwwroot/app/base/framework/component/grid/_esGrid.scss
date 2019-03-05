@@ -1,0 +1,64 @@
+﻿div[es-grid] > .panel-body {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    > div[class^="col-"] {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    
+}
+div[es-grid] {
+    .table {
+        th {
+            white-space: nowrap;
+        }
+    }
+}
+
+div[es-grid] [uib-pagination] .pagination {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+div[es-grid] > .panel-footer {
+    line-height: 0 !important;
+    padding: 0px 0px !important;
+}
+
+div[es-grid] [uib-pagination] span[class*=" glyphicon-"] {
+    line-height: 13px;
+}
+
+div[es-grid] [uib-pagination] {
+    line-height: 0px !important;
+    margin-bottom: 0px !important;
+    margin-top: 0px !important;
+}
+
+div[es-grid] .panel-footer .btn.refresh {
+    position: relative;
+    top: 50%;
+}
+@if $direction == rtl{
+
+    div[es-grid] [uib-pagination] span[class*="glyphicon-"] {
+        transform: rotateY(180deg);
+    }
+}
+.table.table-bordered thead > tr > th,
+.table > thead > tr > th {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ffffff;
+    cursor: pointer;
+}
+

@@ -1,0 +1,27 @@
+﻿{
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "In Progress": "در دست اقدام",
+  "Done": "انجام شده",
+  "New": "جدید",
+  "NoRecordFound": "رکوردی یافت نشد",
+  "Row": "ردیف",
+  "Title": "عنوان فرم ارزیابی",
+  "DueDate": "مهلت اقدام",
+  "DoDate": "زمان انجام",
+  "WatchDate": "زمان مشاهده",
+  "InsertDate": "زمان ورود",
+  "ProjectInfo": "پروژه",
+  "EvaluationPeriodRef": "دوره ارزیابی",
+  "Priority": "الویت",
+  "CreatedBy": "کاربر ایجاد کننده",
+  "CreatedDate": "تاریخ ایجاد",
+  "FormLink": "فرم ارزیابی",
+  "Description": "ملاحظات",
+  "Status": "وضعیت",
+  "Actions": "عملیات",
+  "Choose an Action": "یک عملیات انتخاب کنید",
+  "Link": "پیوند",
+  "SenderProjectMemberRef":"فرستنده"
+
+}

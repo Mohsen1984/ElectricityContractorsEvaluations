@@ -1,0 +1,33 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title es-title" ng-bind="'TreeComponent' | translate">
+        </h3>
+    </div>
+    <div class="panel-body">
+        <es-datasource name="home.entityTreeListDs"
+                       autoload="true"
+                       method="GET"
+                       url='/TreeComponent/EntityTreeNodes'>
+        </es-datasource>
+        <div es-tree
+             autoload="false"
+             tree-data="lazy"
+             tree-datasource="home.entityTreeListDs"
+             tree-node-template="lazyNodeTemplate.html">
+        </div>
+        <script type="text/ng-template" id="lazyNodeTemplate.html">
+            <i ng-if="node.hasChild" class="fa fa-folder"></i>
+            <i ng-if="!node.hasChild" class="fa fa-file"></i>
+            <span>{{node.text}}</span>
+          <button class="btn btn-success" ng-click="parent.home.f(node.) ">
+              <i class="fa fa-plus"></i>
+          </button>
+        </script>
+    </div>
+    <div class="panel-footer">
+        <a class="btn btn-default" href="/">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </a>
+    </div>
+</div>

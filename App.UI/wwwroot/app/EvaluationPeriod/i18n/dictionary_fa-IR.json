@@ -1,0 +1,30 @@
+﻿{
+  "PersonNavigationList": "دوره ارزیابی ",
+  "Search": "جستجو",
+  "Cancel": "انصراف",
+  "Create": "ایجاد",
+  "Edit": "ویرایش",
+  "Delete": "حذف",
+  "Details": "جزئیات",
+  "RequiredWarning": "این فیلد اجباری است",
+  "DeleteComfirmation": "آیا از حذف رکورد مورد نظر اطمینان دارید؟",
+  "Ok": "تائید",
+
+
+  "periodID": "شناسه",
+  "title": "عنوان دوره ارزیابی",
+  "fromDate": "از تاریخ",
+  "toDate": "تا تاریخ",
+  "reginalPowerCorpRef": "شرکت برق منطقه ای",
+  "state": "وضعیت",
+  "description": "توضیحات",
+
+
+  "evaluationProjectId": "شناسه پروژه ه مورد ارزیابی",
+
+  "projectTreeRef": "پروژه مورد ارزیابی",
+
+  "periodRef": "دوره ارزیابی"
+
+
+}

@@ -1,0 +1,137 @@
+﻿<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-plus"></span>{{'Create'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="ExternalOrganization" novalidate>
+            <div es-validationsummary="errors">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="create.entity.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="ExternalOrganization.title.$error" ng-if="ExternalOrganization.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="ExternalOrgTypeRef" class="control-label required-label">{{'externalOrgTypeRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ExternalOrgType/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="edit.ds.$data.externalOrgTypeRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ExternalOrganization.ExternalOrgTypeRef.$error" ng-if="ExternalOrganization.ExternalOrgTypeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="manager" class="control-label required-label">{{'manager'| translate }}</label>
+                <input name="manager" ng-model="create.entity.manager" class="form-control" placeholder="{{'manager'| translate}}" required>
+                <div ng-messages="ExternalOrganization.manager.$error" ng-if="ExternalOrganization.manager.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="managerMobile" class="control-label required-label">{{'managerMobile'| translate }}</label>
+                <input name="managerMobile" ng-model="create.entity.managerMobile" class="form-control" placeholder="{{'managerMobile'| translate}}" required>
+                <div ng-messages="ExternalOrganization.managerMobile.$error" ng-if="ExternalOrganization.managerMobile.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="tel" class="control-label required-label">{{'tel'| translate }}</label>
+                <input name="tel" ng-model="create.entity.tel" class="form-control" placeholder="{{'tel'| translate}}" required>
+                <div ng-messages="ExternalOrganization.tel.$error" ng-if="ExternalOrganization.tel.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="fax" class="control-label required-label">{{'fax'| translate }}</label>
+                <input name="fax" ng-model="create.entity.fax" class="form-control" placeholder="{{'fax'| translate}}" required>
+                <div ng-messages="ExternalOrganization.fax.$error" ng-if="ExternalOrganization.fax.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="mail" class="control-label required-label">{{'mail'| translate }}</label>
+                <input name="mail" ng-model="create.entity.mail" class="form-control" placeholder="{{'mail'| translate}}" required>
+                <div ng-messages="ExternalOrganization.mail.$error" ng-if="ExternalOrganization.mail.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="mainAddress" class="control-label required-label">{{'mainAddress'| translate }}</label>
+                <input name="mainAddress" ng-model="create.entity.mainAddress" class="form-control" placeholder="{{'mainAddress'| translate}}" required>
+                <div ng-messages="ExternalOrganization.mail.$error" ng-if="ExternalOrganization.mainAddress.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="subAddress" class="control-label required-label">{{'subAddress'| translate }}</label>
+                <input name="subAddress" ng-model="create.entity.subAddress" class="form-control" placeholder="{{'subAddress'| translate}}" required>
+                <div ng-messages="ExternalOrganization.subAddress.$error" ng-if="ExternalOrganization.subAddress.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="registerCode" class="control-label required-label">{{'registerCode'| translate }}</label>
+                <input name="registerCode" ng-model="create.entity.registerCode" class="form-control" placeholder="{{'registerCode'| translate}}" required>
+                <div ng-messages="ExternalOrganization.registerCode.$error" ng-if="ExternalOrganization.registerCode.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="Description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="Description" ng-model="create.entity.description" class="form-control" placeholder="{{'description'| translate}}" required>
+                <div ng-messages="ExternalOrganization.description.$error" ng-if="ExternalOrganization.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="create.entity"
+                es-ng-post-form-name="ExternalOrganization"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ExternalOrganization.$invalid"
+                es-ng-post-url="/ExternalOrganization/Create"
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ExternalOrganization.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>

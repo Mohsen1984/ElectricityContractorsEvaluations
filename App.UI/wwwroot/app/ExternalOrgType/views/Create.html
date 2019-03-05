@@ -1,0 +1,46 @@
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-plus"></span>{{'Create'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="ExternalOrgType" novalidate>
+            <div es-validationsummary="errors">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="create.entity.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="ExternalOrgType.title.$error" ng-if="ExternalOrgType.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="Description" class="control-label required-label" ng-bind="'description'| translate"></label>
+                <input name="Description" ng-model="create.entity.description" class="form-control" placeholder="{{'description'| translate}}" required>
+                <div ng-messages="ExternalOrgType.description.$error" ng-if="ExternalOrgType.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="create.entity"
+                es-ng-post-form-name="ExternalOrgType"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ExternalOrgType.$invalid"
+                es-ng-post-url="/ExternalOrgType/Create"
+
+                es-ng-post-success="root.success()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+        <button class="btn btn-default" ui-sref="ReginalPowerCorp.List">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+    </div>
+</div>
