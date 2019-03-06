@@ -14,7 +14,7 @@ namespace App.UI.Models
 
 
         [Key]
-        public int ProjectId { get; set; }
+        public int ProjectInfoId { get; set; }
       
         public string Title { get; set; }
         

@@ -35,7 +35,7 @@ namespace App.UI.Controllers
         [HttpGet]
         public ActionResult Get_Lov()
         {
-            var result = db.ProjectInfos.Select(a => new { id = a.ProjectId, name = a.Title });
+            var result = db.ProjectInfos.Select(a => new { id = a.ProjectInfoId, name = a.Title });
             return Ok(result);
         }
 
@@ -46,8 +46,8 @@ namespace App.UI.Controllers
         [HttpGet]
         public ActionResult GetAllPaged(ProjectInfoSearchModel model)
         {
-            var select = db.ProjectInfos.Include(i => i.ReginalPowerCorp).Include(i=> i.ProjectTree);
-            AllItems = JsonConvert.DeserializeObject<List<ProjectInfoModel>>(JsonConvert.SerializeObject(select));
+            AllItems = db.ProjectInfos.Include(i => i.ReginalPowerCorp).Include(i=> i.ProjectTree).ToList();
+           // AllItems = JsonConvert.DeserializeObject<List<ProjectInfoModel>>(JsonConvert.SerializeObject(select));
             var filtered = AllItems;
 
             if (model.ProjectTreeRef != 0)
@@ -72,7 +72,7 @@ namespace App.UI.Controllers
         [HttpGet]
         public ActionResult GetById(int id)
         {
-            var result = AllItems.Where(x => x.ProjectId == id).FirstOrDefault();
+            var result = AllItems.Where(x => x.ProjectInfoId == id).FirstOrDefault();
             return Ok(result);
         }
         [HttpPost]
@@ -88,7 +88,7 @@ namespace App.UI.Controllers
                     db.SaveChanges();
                    
 
-                    InserTempTree(model.ServiceTemplateTreeRef, model.ProjectId);
+                    InserTempTree(model.ServiceTemplateTreeRef, model.ProjectInfoId);
                 tranScope.Complete();
             }
         }
@@ -140,7 +140,7 @@ namespace App.UI.Controllers
         public ActionResult Edit([FromBody]ProjectInfoModel model)
         {
             //validation
-            var result = AllItems.Where(x => x.ProjectId == model.ProjectId).FirstOrDefault();
+            var result = AllItems.Where(x => x.ProjectInfoId == model.ProjectInfoId).FirstOrDefault();
             if (result == null)
                 return BadRequest();
             
@@ -159,7 +159,7 @@ namespace App.UI.Controllers
         public ActionResult Delete([FromBody]ProjectInfoModel model)
         {
             //validation
-            var result = AllItems.Where(x => x.ProjectId == model.ProjectId).FirstOrDefault();
+            var result = AllItems.Where(x => x.ProjectInfoId == model.ProjectInfoId).FirstOrDefault();
             if (result == null)
                 return BadRequest();
             db.Remove(result);

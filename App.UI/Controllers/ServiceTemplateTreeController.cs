@@ -82,8 +82,8 @@ namespace App.UI.Controllers
         public ActionResult GetsParentsService(ServiceTemplateTreeSearchModel model)
         {
 
-            var select = db.ServiceTemplateTrees.Where(w=>w.ProjectTreeRef==model.ProjectTreeRef & w.ServiceTemplateTreeRef==null & w.Level=="2");
-            AllItems = JsonConvert.DeserializeObject<List<ServiceTemplateTreeModel>>(JsonConvert.SerializeObject(select));
+            AllItems = db.ServiceTemplateTrees.Where(w=>w.ProjectTreeRef==model.ProjectTreeRef & w.ServiceTemplateTreeRef==null & w.Level=="2").ToList();
+            //AllItems = JsonConvert.DeserializeObject<List<ServiceTemplateTreeModel>>(JsonConvert.SerializeObject(select));
 
             var filtered = AllItems;
             if (model.Title != null)

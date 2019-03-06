@@ -4,7 +4,9 @@
 <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title es-title" ng-bind="'ProjectTree' | translate"></h3>
-        {{home.nodeId}}
+
+      {{GprojectId}}
+       {{GserviceTreeTempId}}
     </div>
     <div class="panel-body">
         <p class="clearfix"></p>
@@ -164,9 +166,9 @@
                             </tr>
                             <tr ng-repeat="item in $items" grid-selectable="item">
                                 <td class="text-center" ng-bind="item.$index"></td>
-                                <td ng-bind="item.projectId"></td>
+                                <td ng-bind="item.projectInfoId"></td>
                                 <td ng-bind="item.title"></td>
-                                <td><a href="/ServiceTree#!/List/{{item.projectId}}/{{GprojectId}}/{{GserviceTreeTempId}}" class="btn btn-default">خدمات پروژه</a></td>
+                                <td><a href="/ServiceTree#!/List/{{item.projectInfoId}}/{{GprojectId}}/{{GserviceTreeTempId}}" class="btn btn-default">خدمات پروژه</a></td>
                             </tr>
                         </tbody>
                     </table>

@@ -23,7 +23,7 @@ app.config(['$translateProvider', '$stateProvider', "$locationProvider", "$urlRo
                 controllerAs: 'root'
             })
             .state('ServiceTree.List', {
-                url: '/:projectInfoRef/:projectId/:serviceTreeTempId',
+                url: '/:projectInfoId/:projectId/:serviceTreeTempId',
                 templateUrl: function (params) {
                     return viewPath +'/Home.html';
                 },
@@ -120,7 +120,18 @@ app.controller("HomeController",
     ["$rootScope", "$stateParams", "esDatasource", function ($rootScope,$stateParams, esDatasource) {
 
         var vm = this;
-   
+        $rootScope.GprojectInfoId = $stateParams.projectInfoId;
+        $rootScope.projectId = $stateParams.projectId
+        $rootScope.serviceTreeTempId = $stateParams.serviceTreeTempId;
+        vm.dsProjectInfo = new esDatasource({
+            url: '/ServiceTree/EntityServiceTreeNodes',
+            method: 'GET',
+            params: {
+                ProjectInfoRef: $rootScope.GprojectInfoId,
+
+            }
+        });
+        vm.dsProjectInfo.refresh();
     }]);
 
 app.controller("DetailsController",

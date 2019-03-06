@@ -63,6 +63,11 @@ app.config(['$translateProvider', '$stateProvider', "$locationProvider", "$urlRo
                 controller: "DeleteController"
             })
 
+            .state('ProjectTree.Back', {
+                url: '/BackFromServiceTree/:projectId/:serviceTreeTempId/:GprojectInfoId',
+                controllerAs: 'back',
+                controller: "BackController"
+            })
             ///////////////////////ServiceTemplateTree
             .state('ProjectTree.ListService', {
                 url: '/HomeServiceTemplateTree/:projectref',
@@ -175,6 +180,162 @@ app.controller("RootController",
                 }
             };
         }]);
+
+app.controller("BackController",
+    ["$state", "$scope", "$rootScope", "$stateParams", "esDatasource", function ($state, $scope, $rootScope, $stateParams, esDatasource) {
+
+        var vm = this;
+
+        $rootScope.GprojectId = $stateParams.projectId;
+        $rootScope.GserviceTreeTempId = $stateParams.serviceTreeTempId;
+   
+        $state.go("ProjectTree.List");
+
+      
+    }]);
+app.controller("HomeController",
+    ["$state", "$scope", "$rootScope", "$stateParams", "esDatasource", function ($state, $scope, $rootScope, $stateParams, esDatasource) {
+
+        var vm = this;
+        vm.nodeId = 2;
+        $scope.$parent.ProjectTreeRef = 6666;
+
+        vm.dsService = new esDatasource({
+            url: '/ServiceTemplateTree/GetsParentsService',
+            method: 'GET',
+            params: {
+                ProjectTreeRef: $rootScope.GprojectId,
+                pageIndex: 0,
+                pageSize: 5
+            }
+        });
+        vm.dsService.refresh();
+
+        vm.dsProjectInfo = new esDatasource({
+            url: '/ProjectInfo/GetAllPaged',
+            method: 'GET',
+            params: {
+                ServiceTemplateTreeRef: $rootScope.GserviceTreeTempId,
+                pageIndex: 0,
+                pageSize: 5
+            }
+        });
+        vm.dsProjectInfo.refresh();
+
+        vm.ProjectTreeClick = function (node) {
+
+            $rootScope.GprojectId = node.id;
+            $rootScope.GserviceTreeTempId = 0;
+
+            vm.nodeId = node.id;
+            vm.dsService.params = {
+                ProjectTreeRef: $rootScope.GprojectId,
+                pageIndex: 0,
+                pageSize: 5,
+
+            };
+            vm.dsService.refresh();
+            /////
+            vm.dsProjectInfo.params =
+                {
+                    ServiceTemplateTreeRef: $rootScope.GserviceTreeTempId,
+                    pageIndex: 0,
+                    pageSize: 5
+                };
+            vm.dsProjectInfo.refresh();
+
+        };
+        vm.GridServiceRowClick = function (selecteditem) {
+            vm.dsProjectInfo.params =
+                {
+                    ServiceTemplateTreeRef: selecteditem.serviceTemplateTreeId,
+                    pageIndex: 0,
+                    pageSize: 5
+                };
+            vm.dsProjectInfo.refresh();
+
+            $rootScope.GserviceTreeTempId = selecteditem.serviceTemplateTreeId;
+        };
+
+
+    }]);
+
+app.controller("DetailsController",
+    ["$stateParams", "esDatasource",
+        function ($stateParams, esDatasource) {
+            var vm = this;
+            vm.ds = new esDatasource({
+                url: '/ProjectTree/GetById/' + $stateParams.id,
+                method: 'GET'
+            });
+            vm.ds.refresh();
+
+        }]);
+
+app.controller("CreateController",
+    ["$scope", "$stateParams", "esDatasource",
+        function ($scope, $stateParams, esDatasource) {
+            var vm = this;
+            vm.parentId = $stateParams.parentId;
+            vm.loclevel = $stateParams.level;
+            vm.a = "saallll";
+            if ($stateParams.level == 1) {
+                vm.levelCode2 = [
+                    { value: "1", name: "پروژه" }
+                ];
+                if (vm.parentId != null) {
+                    vm.entity = new esDatasource({
+                        url: '/ProjectTree/CreateAsChild?id=' + vm.parentId + "&level=" + vm.loclevel,
+                        method: 'GET'
+                    });
+                    vm.entity.refresh();
+                }
+            }
+            else if ($stateParams.level == 2) {
+                vm.levelCode2 =
+                    [
+                        { value: "2", name: "خدمات" },
+                        { value: "3", name: "نقشها" }
+                    ];
+            }
+        }]);
+
+app.controller("EditController",
+    ["$stateParams", "esDatasource",
+        function ($stateParams, esDatasource) {
+            var vm = this;
+            vm.ds = new esDatasource({
+                url: '/ProjectTree/GetById/' + $stateParams.id,
+                method: 'GET'
+            });
+            vm.ds.refresh();
+            vm.vaziat = $stateParams.levelCode;
+            vm.levelCode2 =
+
+                [
+                    { value: "1", name: "پروژه" },
+                    { value: "2", name: "خدمات" },
+                    { value: "3", name: "نقشها" }
+                ];
+        }]);
+
+app.controller("DeleteController",
+    ["$stateParams", "esDatasource",
+        function ($stateParams, esDatasource) {
+            var vm = this;
+            vm.ds = new esDatasource({
+                url: '/ProjectTree/GetById/' + $stateParams.id,
+                method: 'Get'
+            });
+            vm.ds.refresh();
+        }]);
+
+app.controller("SearchController",
+    ["$stateParams", "esDatasource",
+        function ($stateParams, esDatasource) {
+            var vm = this;
+        }]);
+
 
 //////////////////////////////Service
 app.controller("HomeServiceController",
@@ -304,151 +465,5 @@ app.controller("DetailsProjectInfoController",
 
 ////////////////////////////////////
 
-app.controller("HomeController",
-    ["$state", "$scope", "$rootScope", "$stateParams", "esDatasource", function ($state,$scope,$rootScope,$stateParams, esDatasource) {
 
-        var vm = this;
-        vm.nodeId = 2;
-        $scope.$parent.ProjectTreeRef = 6666;
-
-        vm.dsService = new esDatasource({
-            url: '/ServiceTemplateTree/GetsParentsService',
-            method: 'GET',
-            params: {
-                ProjectTreeRef: $rootScope.GprojectId,
-                pageIndex: 0,
-                pageSize: 5
-            }
-        });
-
-        vm.dsProjectInfo = new esDatasource({
-            url: '/ProjectInfo/GetAllPaged',
-            method: 'GET',
-            params: {
-                ServiceTemplateTreeRef: $rootScope.GserviceTreeTempId,
-                pageIndex: 0,
-                pageSize: 5
-            }
-        });
-
-
-        vm.ProjectTreeClick = function (node) {
-
-            $rootScope.GprojectId = node.id;
-            $rootScope.GserviceTreeTempId = 0;
-
-            vm.nodeId = node.id;
-            vm.dsService.params = {
-                ProjectTreeRef: $rootScope.GprojectId,
-                pageIndex: 0,
-                pageSize: 5,
-
-            };
-            vm.dsService.refresh();          
-            /////
-            vm.dsProjectInfo.params =
-                {
-                ServiceTemplateTreeRef: $rootScope.GserviceTreeTempId,
-                    pageIndex: 0,
-                    pageSize: 5
-                };
-            vm.dsProjectInfo.refresh();
-
-        };
-        vm.GridServiceRowClick = function (selecteditem) {
-            vm.dsProjectInfo.params =
-                {
-                        ServiceTemplateTreeRef: selecteditem.serviceTemplateTreeId,
-                        pageIndex: 0,
-                        pageSize: 5
-                };
-            vm.dsProjectInfo.refresh();
-
-            $rootScope.GserviceTreeTempId = selecteditem.serviceTemplateTreeId;
-        };
-
-
-    }]);
-
-app.controller("DetailsController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
-            var vm = this;
-            vm.ds = new esDatasource({
-                url: '/ProjectTree/GetById/' + $stateParams.id,
-                method:'GET'
-            });
-            vm.ds.refresh();
-            
-        }]);
-
-
-app.controller("CreateController",
-    ["$scope","$stateParams", "esDatasource",
-        function ($scope,$stateParams, esDatasource) {
-            var vm = this;
-             vm.parentId = $stateParams.parentId;
-             vm.loclevel = $stateParams.level;
-            vm.a = "saallll";
-            if ($stateParams.level == 1) {
-                vm.levelCode2 = [
-                    { value: "1", name: "پروژه" }
-                ];
-                if (vm.parentId != null) {
-                    vm.entity = new esDatasource({
-                        url: '/ProjectTree/CreateAsChild?id=' + vm.parentId + "&level=" + vm.loclevel,
-                        method: 'GET'
-                    });
-                    vm.entity.refresh();
-                }
-            }
-            else if ($stateParams.level == 2) {
-                vm.levelCode2 =
-                    [
-                        { value: "2", name: "خدمات" },
-                        { value: "3", name: "نقشها" }
-                    ];
-            }      
-        }]);
-
-
-
-
-
-
-app.controller("EditController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
-            var vm = this;
-            vm.ds = new esDatasource({
-                url: '/ProjectTree/GetById/' + $stateParams.id,
-                method: 'GET'
-            });
-            vm.ds.refresh();
-            vm.vaziat = $stateParams.levelCode;
-            vm.levelCode2 =
-
-                [
-                    { value: "1", name: "پروژه" },
-                    { value: "2", name: "خدمات" },
-                    { value: "3", name: "نقشها" }
-                ];
-        }]);
-
-app.controller("DeleteController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
-            var vm = this;
-            vm.ds = new esDatasource({
-                url: '/ProjectTree/GetById/' + $stateParams.id,
-                method:'Get'
-            });
-            vm.ds.refresh();
-        }]);
-
-app.controller("SearchController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
-            var vm = this;
-        }]);
 

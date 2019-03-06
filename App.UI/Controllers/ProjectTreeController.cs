@@ -23,6 +23,7 @@ namespace App.UI.Controllers
 
         }
 
+
         public ActionResult Get_Lov()
         {
             var result = db.ProjectTrees.Select(a => new { id = a.ProjectTreeId, name = a.Title });
@@ -169,7 +170,7 @@ namespace App.UI.Controllers
                   {
                       Id = x.ProjectTreeId,
                       Text = x.Title,
-                      HasChild = (db.ProjectTrees.Where(p=> p.ProjectTreeRef==x.ProjectTreeId).Count()==0 ? false : true),
+                      HasChild = (db.ProjectTrees.Where(p=> p.ProjectTreeRef==x.ProjectTreeId & p.Level == "1").Count()==0 ? false : true),
                       ParentId = null,
                       Level = x.Level,
                       LevelCode = x.LevelCode
@@ -181,7 +182,7 @@ namespace App.UI.Controllers
                 {
                     Id = x.ProjectTreeId,
                     Text = x.Title,
-                    HasChild = (db.ProjectTrees.Where(p => p.ProjectTreeRef == x.ProjectTreeId).Count() == 0 ? false : true),
+                    HasChild = (db.ProjectTrees.Where(p => p.ProjectTreeRef == x.ProjectTreeId & p.Level == "1").Count() == 0 ? false : true),
                     ParentId = null,
                     Level = x.Level,
                     LevelCode = x.LevelCode

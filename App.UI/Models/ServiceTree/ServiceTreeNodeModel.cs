@@ -14,7 +14,7 @@ namespace App.UI.Models
         public string Level { get; set; }
         public string LevelCode { get; set; }
         public string ParentId { get; set; }
-        public bool HasChild { get; set; }
+  
         public int ProjectRef { get; set; }
 
         public int ServiceTemplateTreeRef { get; set; }
