@@ -147,6 +147,7 @@ app.controller("RootController",
                     $state.go("ProjectTree.List");
           
             };
+      
             vm.error = function () {
             };
             
@@ -381,8 +382,8 @@ app.controller("EditServiceController",
         }]);
 
 app.controller("CreateServiceController",
-    ["$scope","$stateParams", "esDatasource",
-        function ($scope,$stateParams, esDatasource) {
+    ["$state","$rootScope","$scope","$stateParams", "esDatasource",
+        function ($state,$rootScope,$scope,$stateParams, esDatasource) {
             var vm = this;
             // $stateParams.parentId;
             vm.loclevel = $stateParams.level;
@@ -412,7 +413,11 @@ app.controller("CreateServiceController",
             }
 
            
+            vm.success2 = function () {
+               // alert($rootScope.GprojectId);
+                $state.go("ProjectTree.ListService", { "projectref": $rootScope.GprojectId });
 
+            };
 
 
         }]);
