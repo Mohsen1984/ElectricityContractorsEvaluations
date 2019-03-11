@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using App.UI.Models;
 using App.UI.Models.Common;
@@ -137,7 +138,7 @@ namespace App.UI.Controllers
                     model.ServiceTemplateTreeRef = null;
                 db.Add(model);
                 db.SaveChanges();
-
+                Thread.Sleep(100);
             }
             return Ok();
         }

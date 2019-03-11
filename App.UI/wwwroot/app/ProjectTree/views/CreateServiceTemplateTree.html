@@ -94,7 +94,7 @@
 
             </form>
         </div>
-
+        <!--// ui-sref="ProjectTree.ListService({projectref :GprojectId })"-->
         <div class="panel-footer">
             <button class="btn btn-primary"
                     es-ng-post
@@ -103,8 +103,8 @@
                     es-ng-post-validation-object="errors"
                     es-ng-post-disable-object="ServiceTemplateTreeForm.$invalid"
                     es-ng-post-url="/ServiceTemplateTree/Create"
-                    ui-sref="ProjectTree.ListService({projectref :GprojectId })"
-                    es-ng-post-error="root.error()">
+                    es-ng-post-success="createservice.success2()"
+                    es-ng-post-error="createservice.error()">
                 <i class="fa fa-check-circle"></i>
                 <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
             </button>
