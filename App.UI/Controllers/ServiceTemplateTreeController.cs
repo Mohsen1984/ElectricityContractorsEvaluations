@@ -138,7 +138,7 @@ namespace App.UI.Controllers
                     model.ServiceTemplateTreeRef = null;
                 db.Add(model);
                 db.SaveChanges();
-                Thread.Sleep(100);
+               // Thread.Sleep(100);
             }
             return Ok();
         }
