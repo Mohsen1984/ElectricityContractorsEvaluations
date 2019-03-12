@@ -16,17 +16,7 @@
             <div class="clearfix  visible-md-block visible-lg-block"></div>
 
 
-            <div class="form-group col-md-4">
-                <label for="projectNo" class="control-label required-label">{{'projectNo'| translate }}</label>
-                <input required
-                       name="entityValue"
-                       es-datepicker
-                       ng-model="create.entity.planedFinishDate"
-                       datepicker-calendar="persian"
-                       datepicker-language="fa"
-                       datepicker-dateformat="DD dd MM yy">
-            </div>
-            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
 
 
             <div class="form-group col-md-4">
@@ -54,7 +44,7 @@
                              placeholder="انتخاب کنید"
                              ng-disabled="true">
                 </es-dropdown>
-                <div ng-messages="ContractInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                <div ng-messages="ProjectInfo.projectTreeRef.$error" ng-if="ProjectInfo.projectTreeRef.$dirty">
                     <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
                 </div>
             </div>
@@ -64,16 +54,16 @@
             <div class="form-group col-md-4">
                 <label class="control-label required-label">{{'serviceTemplateTreeRef'| translate }}</label>
                 <div style="visibility:hidden"> {{create.entity.serviceTemplateTreeRef=GserviceTreeTempId}}</div>
-                <es-datasource name="esDropdown.serviceTemplateTreeRef" autoload="true" method="GET" url='/ServiceTemplateTree/Get_Lov' params=""></es-datasource>
+                <es-datasource name="esDropdown.serviceTemplateTreeRefx" autoload="true" method="GET" url='/ServiceTemplateTree/Get_Lov' params=""></es-datasource>
                 <es-dropdown ng-model="create.entity.serviceTemplateTreeRef"
-                             datasource="esDropdown.serviceTemplateTreeRef"
+                             datasource="esDropdown.serviceTemplateTreeRefx"
                              selected-display-name="['name']"
                              display-column-names="['name']"
                              value-member="id"
                              placeholder="انتخاب کنید"
                              ng-disabled="true">
                 </es-dropdown>
-                <div ng-messages="ContractInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                <div ng-messages="ProjectInfo.serviceTemplateTreeRef.$error" ng-if="ProjectInfo.serviceTemplateTreeRef.$dirty">
                     <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
                 </div>
             </div>
@@ -94,6 +84,120 @@
                 </div>
             </div>
             <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="actualStartDate" class="control-label required-label">{{'actualStartDate'| translate }}</label>
+                <input required
+                       name="actualStartDate"
+                       es-datepicker
+                       ng-model="create.entity.actualStartDate"
+                       datepicker-calendar="persian"
+                       datepicker-language="fa"
+                       datepicker-dateformat="DD dd MM yy">
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="actualFinishDate" class="control-label required-label">{{'actualFinishDate'| translate }}</label>
+                <input required
+                       name="actualFinishDate"
+                       es-datepicker
+                       ng-model="create.entity.actualFinishDate"
+                       datepicker-calendar="persian"
+                       datepicker-language="fa"
+                       datepicker-dateformat="DD dd MM yy">
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'documnetCotrollerRef'| translate }}</label>
+                <es-datasource name="esDropdown.DocumnetCotrollerx" autoload="true" method="GET" url='/Person/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.documnetCotrollerRef"
+                             datasource="esDropdown.DocumnetCotrollerx"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectInfo.reginalPowerCorpRef.$error" ng-if="ProjectInfo.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="estimatedAmount" class="control-label required-label">{{'estimatedAmount'| translate }}</label>
+                <input name="estimatedAmount" ng-model="create.entity.estimatedAmount" class="form-control" placeholder="{{'estimatedAmount'| translate}}" required>
+                <div ng-messages="ProjectInfo.estimatedAmount.$error" ng-if="ProjectInfo.estimatedAmount.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="planedFinishDate" class="control-label required-label">{{'planedFinishDate'| translate }}</label>
+                <input required
+                       name="planedFinishDate"
+                       es-datepicker
+                       ng-model="create.entity.planedFinishDate"
+                       datepicker-calendar="persian"
+                       datepicker-language="fa"
+                       datepicker-dateformat="DD dd MM yy">
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="planedStartDate" class="control-label required-label">{{'planedStartDate'| translate }}</label>
+                <input required
+                       name="planedStartDate"
+                       es-datepicker
+                       ng-model="create.entity.planedStartDate"
+                       datepicker-calendar="persian"
+                       datepicker-language="fa"
+                       datepicker-dateformat="DD dd MM yy">
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'projectControllerRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectCx" autoload="true" method="GET" url='/Person/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.projectControllerRef"
+                             datasource="esDropdown.projectCx"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label class="control-label required-label">{{'projectManagerRef'| translate }}</label>
+                <es-datasource name="esDropdown.projectManagerRefx" autoload="true" method="GET" url='/Person/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="create.entity.projectManagerRef"
+                             datasource="esDropdown.projectManagerRefx"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectInfo.projectTreeRef.$error" ng-if="ContractInfo.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+
+
+
 
             <div class="form-group col-md-4">
                 <label for="description" class="control-label required-label" ng-bind="'description'| translate"></label>

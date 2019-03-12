@@ -13,15 +13,15 @@ namespace App.UI.Controllers
     public class PersonController : Controller
     {
         private static List<PersonModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public PersonController(EvaluationContext d)
         {
             db = d;
             //if (AllItems == null)
             //{
             AllItems = new List<PersonModel>();
-            var a = db.Persons;
-            AllItems = a.ToList();
+            //var a = db.Persons;
+            //AllItems = a.ToList();
 
 
             // }

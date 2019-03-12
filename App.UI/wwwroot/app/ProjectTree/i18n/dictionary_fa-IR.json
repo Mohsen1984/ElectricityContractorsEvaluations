@@ -26,11 +26,23 @@
   "serviceTitle": "عنوان خدمت",
   "ServiceTemplateTree": "درختواره خدمات / نقش",
   "return": "بازگشت",
-  "projectInfoTitle": "اطلاعات پروژه",
-  
 
+
+
+  "projectInfoTitle": "اطلاعات پروژه",
+  "projectNo": "شماره پروژه",
+
+
+  "actualFinishDate": "تاریخ واقعی اتمام",
+  "actualStartDate": "تاریخ واقعی شروع",
+  "documnetCotrollerRef": "مسئول مستند سازی پروژه",
+  "planedStartDate": "تاریخ پیش بینی شروع",
+  "planedFinishDate": "تاریخ پیش بینی اتمام",
+  "estimatedAmount": "برآورد اولیه پروژه",
+  "projectControllerRef": "مسئول کنترل پروژه",
+  "projectManagerRef": "مدیر پروژه",
   "projectInfo": "??????????????????????",
 
-  "serviceTemplateTreeRef": "سرویس مربوطه",
-   "projectNo": "شماره پروژه"
+  "serviceTemplateTreeRef": "سرویس مربوطه"
+
 }
