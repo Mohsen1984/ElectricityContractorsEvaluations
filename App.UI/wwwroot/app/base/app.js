@@ -1,5 +1,5 @@
 ﻿//module
-var app = angular.module("base", ['tooltips','myDatasource','esGrid', 'esSelect', 'esButton', 'esValidationsummary', 'esPost', 'esTree', 'ngCookies', 'ui.router', 'ui.bootstrap', 'pascalprecht.translate','ngMessages']);
+var app = angular.module("base", ['esDatepicker','tooltips','esGrid', 'esSelect', 'esButton', 'esValidationsummary', 'esPost', 'esTree', 'ngCookies', 'ui.router', 'ui.bootstrap', 'pascalprecht.translate','ngMessages']);
 
 //provider
 app.provider("culture", function () {

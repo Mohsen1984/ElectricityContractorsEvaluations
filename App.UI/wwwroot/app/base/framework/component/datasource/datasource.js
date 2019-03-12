@@ -1,5 +1,4 @@
-﻿var app1 = angular.module('esDatasource', []);
-
+﻿var app1 = angular.module('esDatasource',[]);
 
 app1.factory('esDatasource', function ($http, $location) {
     function DatasourceClass(dsoptions) {
@@ -16,7 +15,7 @@ app1.factory('esDatasource', function ($http, $location) {
         this.params = options.params;
         this.beforeRequest = options.beforeRequest;
         this.afterResponse = options.afterResponse;
-        this.addDataChangeHandlers = function (handler) {
+        this.addDataChangeHandler = function (handler) {
             dataChangedHandlers.push(handler);
         };
         this.afterError = options.afterError;
@@ -34,9 +33,10 @@ app1.factory('esDatasource', function ($http, $location) {
             }
         }
         this.setResult = function (result) {
+            var oldData = this.$data;
             this.$data = result;
             dataChangedHandlers.forEach(function (handler) {
-                handler.call(result, [result]);
+                handler.call(result, result, oldData);
             });
         };
         this.setUrl = function (url) {
@@ -146,15 +146,3 @@ app1.directive('esDatasource', ["$compile", "esDatasource", "$parse",
             }
         };
     }]);
-
-var app22 = angular.module('myDatasource', []);
-app22.factory('myDatasource', function ($http, $location) {
-    function test(dsoptions) {
-        var defaultOptions = {
-            Name: "defalut"
-        };
-        this.data = dsoptions.Name;
-    }
-    return test;
-});
-

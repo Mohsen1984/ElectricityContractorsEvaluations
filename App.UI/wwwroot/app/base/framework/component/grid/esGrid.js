@@ -127,7 +127,7 @@ gridModule.directive('esGrid', ["$http", "esDatasource", "$parse", "$compile", "
                             
 
                             if (sc.dataMode === "local") {
-                                sc.datasource.addDataChangeHandlers(function (item) {
+                                sc.datasource.addDataChangeHandler(function (item) {
                                     sc.$refresh();
                                 });
                             }

@@ -523,6 +523,36 @@
 
   <ItemGroup>
     <None Include="Views\DesignEvaluationForm\Index.cshtml" />
+    <None Include="wwwroot\app\base\framework\component\base-var - Copy.scss" />
+    <None Include="wwwroot\app\base\framework\component\base-var.scss" />
+    <None Include="wwwroot\app\base\framework\component\bootstrap\esBootstrap.scss" />
+    <None Include="wwwroot\app\base\framework\component\bootstrap\esBootstrapRtl.scss" />
+    <None Include="wwwroot\app\base\framework\component\button\esButton.js" />
+    <None Include="wwwroot\app\base\framework\component\button\esButton.scss" />
+    <None Include="wwwroot\app\base\framework\component\button\esButtonRtl.scss" />
+    <None Include="wwwroot\app\base\framework\component\datasource\datasource.js" />
+    <None Include="wwwroot\app\base\framework\component\grid\esGrid.js" />
+    <None Include="wwwroot\app\base\framework\component\grid\esGridLtr.scss" />
+    <None Include="wwwroot\app\base\framework\component\grid\esGridRtl.scss" />
+    <None Include="wwwroot\app\base\framework\component\grid\_esGrid.scss" />
+    <None Include="wwwroot\app\base\framework\component\post\esPost.js" />
+    <None Include="wwwroot\app\base\framework\component\select\esSelect.js" />
+    <None Include="wwwroot\app\base\framework\component\select\esSelect.scss" />
+    <None Include="wwwroot\app\base\framework\component\select\lib\select.js" />
+    <None Include="wwwroot\app\base\framework\component\select\lib\select.min.css.map" />
+    <None Include="wwwroot\app\base\framework\component\select\lib\select.min.js" />
+    <None Include="wwwroot\app\base\framework\component\select\lib\select.min.js.map" />
+    <None Include="wwwroot\app\base\framework\component\tooltip\lib\angular-tooltips.js" />
+    <None Include="wwwroot\app\base\framework\component\tooltip\lib\angular-tooltips.min.js" />
+    <None Include="wwwroot\app\base\framework\component\tooltip\tooltip.js" />
+    <None Include="wwwroot\app\base\framework\component\tree\estree.js" />
+    <None Include="wwwroot\app\base\framework\component\tree\esTree.scss" />
+    <None Include="wwwroot\app\base\framework\component\tree\lib\angular-ui-tree.js" />
+    <None Include="wwwroot\app\base\framework\component\tree\lib\angular-ui-tree.min.js" />
+    <None Include="wwwroot\app\base\framework\component\tree\_esTreeRtl.scss" />
+    <None Include="wwwroot\app\base\framework\component\validationSummary\esValidationSummary.js" />
+    <None Include="wwwroot\app\base\framework\core\LAB.min.js" />
+    <None Include="wwwroot\app\base\framework\index.js" />
     <None Include="wwwroot\app\DesignEvaluationForm\app.js" />
     <None Include="wwwroot\css\site.scss" />
     <None Include="wwwroot\css\site_ltr.scss" />

@@ -1,0 +1,13 @@
+﻿[dir="rtl"] {
+    ul[uib-pagination].pagination {
+        margin-right: 0 !important;
+
+        .pagination {
+            margin-right: 0 !important;
+        }
+    }
+
+    div[es-grid] [uib-pagination] span[class*="glyphicon-"] {
+        transform: rotateY(180deg);
+    }
+}

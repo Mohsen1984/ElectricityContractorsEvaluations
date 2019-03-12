@@ -1,0 +1,11 @@
+﻿
+[dir="rtl"] {
+    @import "bootstrap-rtl";
+    @import "bootstrap-flipped";
+
+    table td[class*=col-], table th[class*=col-] {
+        position: static;
+        display: table-cell;
+        float: none;
+    }
+}

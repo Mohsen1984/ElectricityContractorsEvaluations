@@ -104,6 +104,7 @@ namespace App.UI.Controllers
                 var ModservicetempTree = db.ServiceTemplateTrees.Where(w => w.ServiceTemplateTreeId == ServiceTemplateTreeRef).First();
 
                 i.Title = ModservicetempTree.Title;
+               
                 i.ServiceTemplateTreeRef = ModservicetempTree.ServiceTemplateTreeId;
                 i.ProjectInfoRef = ProjectInfoRef;
                 db.Add(i);
