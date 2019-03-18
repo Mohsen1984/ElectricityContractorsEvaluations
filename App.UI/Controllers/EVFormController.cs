@@ -41,23 +41,24 @@ namespace App.UI.Controllers
         {
 
              ///*https://docs.microsoft.com/en-us/ef/core/querying/related-data*/
-            var select = db.EVForms.Include(i=> i.EvaluationPeriod).Include(i => i.EvaluatorRole).Include(i => i.EvaluatedRole).Include(i=>i.EvaluatorPersone).Include(i=>i.EvaluatedPersone).Include(i => i.ProjectTree).Include(i => i.ReginalPowerCorp);//.Select(s=> new {s.EVFormId,s.EvaluatorRole,EvaluatorRoleTitle=s.EvaluatorRole.Title,s.EvaluatedRoleRef,EvaluatedRoleTitle=s.EvaluatedRole.Title,s.ReginalPowerCorpRef,ReginalPowerCorpTitle=s.ReginalPowerCorp.Title,s.ProjectTreeRef,ProjectTreeTitle=s.ProjectTree.Title });         
-            AllItems = JsonConvert.DeserializeObject<List<EVFormModel>>(JsonConvert.SerializeObject(select));
+            var select = db.EVForms.Include(i=> i.EvaluationPeriod).Include(i => i.EvaluatorRole).Include(i => i.EvaluatedRole).Include(i=>i.EvaluatorPersone).Include(i=>i.EvaluatedPersone).Include(i => i.ProjectTree).Include(i => i.ReginalPowerCorp).Where(w=>1==1);
+           // AllItems = JsonConvert.DeserializeObject<List<EVFormModel>>(JsonConvert.SerializeObject(select));
 
-            var filtered = AllItems;
+          // var filtered = select;
+            
 
             if (model.Title != null)
-                filtered = filtered.Where(x => x.Description.Contains(model.Title)).ToList();
+                select = select.Where(w => w.Description.Contains(model.Title));
 
-    
- 
             if (model.Description != null)
-                filtered = filtered.Where(x => x.Description.Contains(model.Description)).ToList();
+                select = select.Where(x => x.Description.Contains(model.Description));
+            
             PagedList<EVFormModel> result = new PagedList<EVFormModel>();
-            result.Items = filtered.Skip((model.PageIndex * model.PageSize)).Take(model.PageSize).ToList();
+            result.TotalItemsCount = select.Count();
+            result.Items = select.Skip((model.PageIndex * model.PageSize)).Take(model.PageSize).ToList();
             result.PageIndex = model.PageIndex;
             result.PageSize = model.PageSize;
-            result.TotalItemsCount = filtered.Count;
+           
             return Ok(result);
         }
 
