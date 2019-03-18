@@ -53,7 +53,7 @@
                             <label class="control-label required-label">{{'title'| translate }}</label>
                         </th>
                         <th grid-sorting="nationalCode" class="col-xs-1 text-center">
-                            <label  class="control-label required-label">{{'manager'| translate }}</label>
+                            <label class="control-label required-label">{{'externalOrgTypeRef'| translate }}</label>
                         </th>
                     </tr>
                 </thead>
@@ -68,7 +68,7 @@
                         <td class="text-center" ng-bind="item.$index"></td>
                         <td ng-bind="item.externalOrganizationId"></td>
                         <td ng-bind="item.title"></td>
-                        <td ng-bind="item.manager"></td>
+                        <td ng-bind="item.externalOrgType.title"></td>
                     </tr>
                 </tbody>
             </table>

@@ -12,7 +12,7 @@ namespace App.UI.Controllers
     public class OUTreeController : Controller
     {
         private static List<OUTreeModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public OUTreeController(EvaluationContext d)
         {
             db = d;

@@ -12,7 +12,7 @@ namespace App.UI.Controllers
     public class ContractInfoController : Controller
     {
         private static List<ContractInfoModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public ContractInfoController(EvaluationContext d)
         {
             db = d;

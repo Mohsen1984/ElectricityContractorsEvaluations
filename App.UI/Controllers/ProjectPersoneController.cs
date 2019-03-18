@@ -13,7 +13,7 @@ namespace App.UI.Controllers
     public class ProjectPersoneController : Controller
     {
         private static List<PersonModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public ProjectPersoneController(EvaluationContext d)
         {
             db = d;

@@ -11,7 +11,7 @@ namespace App.UI.Controllers
     public class ReginalPowerCorpController : Controller
     {
         private static List<ReginalPowerCorpModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public ReginalPowerCorpController(EvaluationContext d)
         {
             db = d;

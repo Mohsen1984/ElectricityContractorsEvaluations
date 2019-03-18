@@ -121,8 +121,7 @@ app.controller("HomeController",
     }]);
 
 var show = function (data) {
-    var a = data;
-    vm.test = vm.BoxesDs.$data;
+
 
 };
 

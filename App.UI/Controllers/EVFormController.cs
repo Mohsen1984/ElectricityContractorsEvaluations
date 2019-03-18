@@ -20,12 +20,12 @@ namespace App.UI.Controllers
             db = d;
             //if (AllItems == null)
             //{
-            AllItems = new List<EVFormModel>();
-            var a = db.EVForms;
-            AllItems = a.ToList();
+            //AllItems = new List<EVFormModel>();
+            //var a = db.EVForms;
+            //AllItems = a.ToList();
 
 
-            // }
+            //}
         }
 
 
@@ -42,13 +42,10 @@ namespace App.UI.Controllers
 
              ///*https://docs.microsoft.com/en-us/ef/core/querying/related-data*/
             var select = db.EVForms.Include(i=> i.EvaluationPeriod).Include(i => i.EvaluatorRole).Include(i => i.EvaluatedRole).Include(i=>i.EvaluatorPersone).Include(i=>i.EvaluatedPersone).Include(i => i.ProjectTree).Include(i => i.ReginalPowerCorp).Where(w=>1==1);
-           // AllItems = JsonConvert.DeserializeObject<List<EVFormModel>>(JsonConvert.SerializeObject(select));
-
-          // var filtered = select;
-            
+  
 
             if (model.Title != null)
-                select = select.Where(w => w.Description.Contains(model.Title));
+                select = select.Where(w => w.Title.Contains(model.Title));
 
             if (model.Description != null)
                 select = select.Where(x => x.Description.Contains(model.Description));
@@ -66,7 +63,7 @@ namespace App.UI.Controllers
         [HttpGet]
         public ActionResult GetById(int id)
         {
-            var result = AllItems.Where(x => x.EVFormId == id).FirstOrDefault();
+            var result = db.EVForms.Where(x => x.EVFormId == id).FirstOrDefault();
             return Ok(result);
         }
 
@@ -92,7 +89,7 @@ namespace App.UI.Controllers
         public ActionResult Edit([FromBody]EVFormModel model)
         {
             //validation
-            var result = AllItems.Where(x => x.EVFormId == model.EVFormId).FirstOrDefault();
+            var result = db.EVForms.Where(x => x.EVFormId == model.EVFormId).FirstOrDefault();
             if (result == null)
                 return BadRequest();
             result.Title = model.Title;
@@ -109,7 +106,7 @@ namespace App.UI.Controllers
         public ActionResult Delete([FromBody]EVFormModel model)
         {
             //validation
-            var result = AllItems.Where(x => x.EVFormId == model.EVFormId).FirstOrDefault();
+            var result = db.EVForms.Where(x => x.EVFormId == model.EVFormId).FirstOrDefault();
             if (result == null)
                 return BadRequest();
             db.Remove(result);

@@ -13,7 +13,7 @@ namespace App.UI.Controllers
     public class EvaluationPeriodController : Controller
     {
         private static List<EvaluationPeriodModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public EvaluationPeriodController(EvaluationContext d)
         {
             db = d;

@@ -11,7 +11,7 @@ namespace App.UI.Controllers
     public class ExternalOrgTypeController : Controller
     {
         private static List<ExternalOrgTypeModel> AllItems;
-        private static EvaluationContext db;
+        private readonly EvaluationContext db;
         public ExternalOrgTypeController(EvaluationContext d)
         {
             db = d;
