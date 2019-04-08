@@ -14,12 +14,28 @@ namespace Paint
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .Build();
+
+            var host = new WebHostBuilder()
+               .UseConfiguration(config)
+               .UseKestrel()
+               .UseContentRoot(Directory.GetCurrentDirectory())
+               .UseIISIntegration()
+
+               .UseStartup<Startup>() // Invokes Configure & ConfigureServices on Startup
+               .Build();
+
+            host.Run();
+            //BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+            
                 .Build();
     }
 }

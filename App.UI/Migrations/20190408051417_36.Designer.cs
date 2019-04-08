@@ -4,14 +4,16 @@ using App.UI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace App.UI.Migrations
 {
     [DbContext(typeof(EvaluationContext))]
-    partial class EvaluationContextModelSnapshot : ModelSnapshot
+    [Migration("20190408051417_36")]
+    partial class _36
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1189,7 +1191,7 @@ namespace App.UI.Migrations
                         .WithMany()
                         .HasForeignKey("PersoneRef");
 
-                    b.HasOne("App.UI.Models.ProjectInfoModel", "ProjectInfo")
+                    b.HasOne("App.UI.Models.ServiceTreeModel", "ProjectInfo")
                         .WithMany()
                         .HasForeignKey("ProjectInfoRef");
 

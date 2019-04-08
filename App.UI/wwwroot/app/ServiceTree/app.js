@@ -30,58 +30,54 @@ app.config(['$translateProvider', '$stateProvider', "$locationProvider", "$urlRo
                 controllerAs: 'home',
                 controller: "HomeController"
             })
-            .state('ServiceTree.Create', {
-                url: '/Create',
+            .state('ServiceTree.createProjectMember', {
+                url: '/CreateProjectMember',
                 templateUrl: function (params) {
-                    return viewPath +'/Create.html';
+                    return viewPath +'/CreateProjectMember.html';
                 },
-                controllerAs: 'create',
-                controller: 'CreateController'
+                controllerAs: 'createProjectMember',
+                controller: 'CreateProjectMemberController'
             })
-            .state('ServiceTree.CreateAsChild', {
-                url: '/CreateAsChild/:id/:level',
+            .state('ServiceTree.DetailsProjectMember', {
+                url: '/DetailsProjectMember/:id',
                 templateUrl: function (params) {
-                    return viewPath + '/CreateAsChild.html';
+                    return viewPath +'/DetailsProjectMember.html';
                 },
-                controllerAs: 'createaschild',
-                controller: 'CreateAsChildController'
+                controllerAs: 'detailsProjectMember',
+                controller: 'DetailsProjectMemberController'
             })
-            .state('ServiceTree.Details', {
-                url: '/Details/:id',
+            .state('ServiceTree.EditProjectMember', {
+                url: '/EditProjectMember/:id',
                 templateUrl: function (params) {
-                    return viewPath +'/Details.html';
+                    return viewPath +'/EditProjectMember.html';
                 },
-                controllerAs: 'details',
-                controller: 'DetailsController'
+                controllerAs: 'editprojectmember',
+                controller: 'EditProjectMemberController'
             })
-            .state('ServiceTree.Edit', {
-                url: '/Edit/:id',
+            .state('ServiceTree.DeleteProjectMember', {
+                url: '/DeleteProjectMember/:id',
                 templateUrl: function (params) {
-                    return viewPath +'/Edit.html';
+                    return viewPath +'/DeleteProjectMember.html';
                 },
-                controllerAs: 'edit',
-                controller: 'EditController'
-            })
-            .state('ServiceTree.Delete', {
-                url: '/Delete/:id/:levelCode',
-                templateUrl: function (params) {
-                    return viewPath +'/Delete.html';
-                },
-                controllerAs: 'delete',
-                controller: "DeleteController"
+                controllerAs: 'deleteprojectmember',
+                controller: "DeleteProjectMemberController"
             });
         $urlRouterProvider.otherwise('List');
     }]);
 
 app.controller("RootController",
-    ["$scope", "$state", "esDatasource", "$http", "$sce", "$uibModal",
-        function ($scope, $state, esDatasource, $http, $sce, $uibModal) {
+    ["$rootScope","$scope", "$state", "esDatasource", "$http", "$sce", "$uibModal",
+        function ($rootScope,$scope, $state, esDatasource, $http, $sce, $uibModal) {
             var vm = this;
 
            
             
             vm.success = function () {
                 $state.go("ServiceTree.List");
+            };
+            vm.success2 = function () {
+                $state.go("ServiceTree.List", { "projectInfoId": $rootScope.GprojectInfoId, "projectId": $rootScope.GprojectId, "serviceTreeTempId": $rootScope.GserviceTreeTempId });
+
             };
             vm.error = function () {
             };
@@ -121,9 +117,13 @@ app.controller("HomeController",
 
         var vm = this;
         $rootScope.GprojectInfoId = $stateParams.projectInfoId;
-        $rootScope.projectId = $stateParams.projectId
-        $rootScope.serviceTreeTempId = $stateParams.serviceTreeTempId;
-        vm.dsProjectInfo = new esDatasource({
+        $rootScope.GprojectId = $stateParams.projectId
+        $rootScope.GserviceTreeTempId = $stateParams.serviceTreeTempId;
+       //$rootScope.GserviceId=0
+
+
+
+        vm.dsServiceTree = new esDatasource({
             url: '/ServiceTree/EntityServiceTreeNodes',
             method: 'GET',
             params: {
@@ -131,103 +131,94 @@ app.controller("HomeController",
 
             }
         });
-        vm.dsProjectInfo.refresh();
+        vm.dsServiceTree.refresh();
+
+
+        vm.dsProjectMember = new esDatasource({
+
+            url: '/ProjectMember/GetAllPaged',
+            method: 'GET',
+            params: {
+                ServiceTreeRef: $rootScope.GserviceId,
+                pageIndex: 0,
+                pageSize: 5,
+            }
+
+        });
+        vm.dsProjectMember.refresh();
+
+        vm.ServiceTreeClick = function (node) {
+
+            $rootScope.GserviceId = node.id;
+
+          //  $rootScope.GserviceTreeTempId = 0;
+
+            //vm.nodeId = node.id;
+            vm.dsProjectMember.params = {
+
+                url: '/ProjectMember/GetAllPaged',
+                method: 'GET',
+                ServiceTreeRef: $rootScope.GserviceId,
+                pageIndex: 0,
+                pageSize: 5,
+
+            };
+            vm.dsProjectMember.refresh();
+
+
+        };
+
     }]);
 
-app.controller("DetailsController",
+app.controller("DetailsProjectMemberController",
     ["$stateParams", "esDatasource",
         function ($stateParams, esDatasource) {
             var vm = this;
-            vm.entityTreeListDs = new esDatasource({
-                url: '/ServiceTree/EntityServiceTreeNodes/' + $stateParams.id,
+            vm.ds = new esDatasource({
+                url: '/ProjectMember/GetById' ,
                 method: 'GET',
                 params: {
-                    ProjectInfoRef: $stateParams.projectInfoRef,
+                    id: $stateParams.id
 
                 }
+         
             });
             vm.ds.refresh();
 
         }]);
 
 
-app.controller("CreateController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
+app.controller("CreateProjectMemberController",
+    ["$state","$rootScope","$stateParams", "esDatasource",
+        function ($state,$rootScope,$stateParams, esDatasource) {
             var vm = this;
-            vm.levelCode2 = [
-                { value: "2", name: "خدمات" }
-            ];
 
-      
+            vm.entity = new esDatasource({
+                url: '/ProjectMember/Initialize?projectInfoRef=' + $rootScope.GprojectInfoId + '&ServiceTreeRef=' + $rootScope.GserviceId,
+                method: 'GET'
+            });
+            vm.entity.refresh();
        
         }]);
 
-
-app.controller("CreateAsChildController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
-            var vm = this;
-            var locid=$stateParams.id;
-            var loclevel = $stateParams.level;
-            
-            vm.ds = new esDatasource({
-                url: '/ServiceTree/CreateAsChild?id='+locid + "&level=" + loclevel,
-                method: 'GET'
-            });
-            vm.ds.refresh();
-                   
-            vm.levelCode2 =
-                [
-                    { value: "1", name: "پروژه" },
-                    { value: "2", name: "خدمات" },
-                    { value: "3", name: "نقشها" }
-                ];
-        }]);
-
-app.controller("EditController",
+app.controller("EditProjectMemberController",
     ["$stateParams", "esDatasource",
         function ($stateParams, esDatasource) {
             var vm = this;
             vm.ds = new esDatasource({
-                url: '/ServiceTree/GetById/' + $stateParams.id,
+                url: '/ProjectMember/GetById/' + $stateParams.id,
                 method:'GET'
             });
             vm.ds.refresh();
           
-            vm.levelCode2 =
-                [
-                    { value: "1", name: "پروژه" },
-                    { value: "2", name: "خدمات" },
-                    { value: "3", name: "نقشها" }
-                ];
         }]);
 
-
-app.controller("EditController",
+app.controller("DeleteProjectMemberController",
     ["$stateParams", "esDatasource",
         function ($stateParams, esDatasource) {
             var vm = this;
             vm.ds = new esDatasource({
-                url: '/ServiceTree/GetById/' + $stateParams.id,
-                method: 'GET'
-            });
-            vm.ds.refresh();
-            vm.vaziat = $stateParams.levelCode;
-            vm.levelCode2 =
-                [
-                    { value: "1", name: "پروژه" },
-                    { value: "2", name: "خدمات" },
-                    { value: "3", name: "نقشها" }
-                ];
-        }]);
-
-app.controller("DeleteController",
-    ["$stateParams", "esDatasource",
-        function ($stateParams, esDatasource) {
-            var vm = this;
-            vm.ds = new esDatasource({
-                url: '/ServiceTree/GetById/' + $stateParams.id,
+                url: '/ProjectMember/GetById/' + $stateParams.id,
                 method:'Get'
             });
             vm.ds.refresh();

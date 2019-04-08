@@ -5,10 +5,11 @@
     <div class="panel-heading">
         <h3 class="panel-title es-title" ng-bind="'ProjectTree' | translate"></h3>
 
-      {{GprojectId}}
-       {{GserviceTreeTempId}}
+      <!--{{GprojectId}}
+       {{GserviceTreeTempId}}-->
     </div>
     <div class="panel-body">
+      
         <p class="clearfix"></p>
         <div class="col-sm-6">
             <button es-btn btn-color="success" btn-icon="fa fa-plus" ui-sref="ProjectTree.Create({parentId:null,level :1 })"></button>
@@ -49,7 +50,7 @@
 
         <!--////////////////////////////////////////////////////////////-->
         <div class="col-lg-4 col-md-4" style="border:1px solid;border-left:none;height:400px;overflow:auto;">
-
+           
             <div es-grid
                  grid-datasource="home.dsService"
                  grid-paging="true"

@@ -15,13 +15,15 @@
   "serviceTemplateTreeId": "شناسه",
   "title": "عنوان",
   "reginalPowerCorpRef": "شرکت برق منطقه ای",
-  "serviceTemplateTreeRef": "پدر",
-  "projectTreeRef": "شناسه درخت پروژه",
-  "level": "نوع شاخه درختواه",
-  "EvalType": "نوع نقش",
-  "code": "کد",
-  "levelCode": "کد شاخه",
-  "state": "وضعیت",
+
+  "serviceTreeRef": "خدمت مربوطه",
+
+  "personeRef": "کاربر",
+
+  "roleOrgsRef": "نقش",
+
+  "projectInfoRef": "اطلاعات پروژه",
+
   "Description": "توضیحات"
 
 }

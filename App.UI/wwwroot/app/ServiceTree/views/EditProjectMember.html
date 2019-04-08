@@ -1,0 +1,138 @@
+﻿<div class="panel panel-primary esAffix" es-loading="editprojectmember.ds.loadState == 2">
+    <div class="panel-heading">
+        <h3 class="panel-title"><span class="fa fa-plus"></span>{{'Edite'| translate }}</h3>
+    </div>
+    <div class="panel-body">
+        <form name="ProjectMemberForm" novalidate>
+            <div es-validationsummary="errors">
+
+            </div>
+           
+            <div class="form-group col-md-4">
+                <label for="title" class="control-label required-label">{{'title'| translate }}</label>
+                <input name="title" ng-model="editprojectmember.ds.$data.title" class="form-control" placeholder="{{'title'| translate}}" required>
+                <div ng-messages="ProjectMemberForm.title.$error" ng-if="ProjectMemberForm.title.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="reginalPowerCorpRef" class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
+                <es-datasource name="esDropdown.x" autoload="true" method="GET" url='/ReginalPowerCorp/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="editprojectmember.ds.$data.reginalPowerCorpRef"
+                             datasource="esDropdown.x"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectMemberForm.reginalPowerCorpRef.$error" ng-if="ProjectMemberForm.reginalPowerCorpRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+            <div class="form-group col-md-4">
+                <label for="projectTreeRef" class="control-label required-label">{{'serviceTreeRef'| translate }}</label>
+                <es-datasource name="esDropdown.ServiceTreeRef1" autoload="true" method="GET" url='/ServiceTree/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="editprojectmember.ds.$data.serviceTreeRef"
+                             datasource="esDropdown.ServiceTreeRef1"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ProjectMemberForm.ServiceTreeRef.$error" ng-if="ProjectMemberForm.ServiceTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+
+
+            <div class="form-group col-md-4">
+                <label for="projectInfoRef" class="control-label required-label">{{'projectInfoRef'| translate }}</label>
+                <es-datasource name="esDropdown.ProjectInfoRef1" autoload="true" method="GET" url='/ProjectInfo/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="editprojectmember.ds.$data.projectInfoRef"
+                             datasource="esDropdown.ProjectInfoRef1"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید"
+                             ng-disabled="true">
+                </es-dropdown>
+                <div ng-messages="ProjectMemberForm.ProjectInfoRef.$error" ng-if="ProjectMemberForm.ProjectInfoRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="PersoneRef" class="control-label required-label">{{'personeRef'| translate }}</label>
+                <es-datasource name="esDropdown.PersoneRef1" autoload="true" method="GET" url='/Person/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="editprojectmember.ds.$data.personeRef"
+                             datasource="esDropdown.PersoneRef1"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectMemberForm.PersoneRef.$error" ng-if="editprojectmember.ds.$data.PersoneRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+            <div class="form-group col-md-4">
+                <label for="RoleOrgsRef" class="control-label required-label">{{'roleOrgsRef'| translate }}</label>
+                <es-datasource name="esDropdown.RoleOrgsRef1" autoload="true" method="GET" url='/RoleOrg/Get_Lov' params=""></es-datasource>
+                <es-dropdown ng-model="editprojectmember.ds.$data.roleOrgsRef"
+                             datasource="esDropdown.RoleOrgsRef1"
+                             selected-display-name="['name']"
+                             display-column-names="['name']"
+                             value-member="id"
+                             placeholder="انتخاب کنید">
+                </es-dropdown>
+                <div ng-messages="ProjectMemberForm.projectTreeRef.$error" ng-if="ProjectMemberForm.projectTreeRef.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+            <div class="clearfix  visible-md-block visible-lg-block"></div>
+
+
+            <div class="form-group col-md-4">
+                <label for="Description" class="control-label required-label" ng-bind="'Description'| translate"></label>
+                <input name="Description" ng-model="editprojectmember.ds.$data.description" class="form-control" placeholder="{{'Description'| translate}}">
+                <div ng-messages="ProjectMemberForm.description.$error" ng-if="ProjectMemberForm.description.$dirty">
+                    <span class="text-danger" ng-message="required" ng-bind="'RequiredWarning'| translate"></span>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-primary"
+                es-ng-post
+                post-object="editprojectmember.ds.$data"
+                es-ng-post-form-name="ProjectMemberForm"
+                es-ng-post-validation-object="errors"
+                es-ng-post-disable-object="ProjectMemberForm.$invalid"
+                es-ng-post-url="/ProjectMember/Edit"
+                es-ng-post-success="root.success2()"
+                es-ng-post-error="root.error()">
+            <i class="fa fa-check-circle"></i>
+            <span class="padding-right-3" ng-bind="'Ok'| translate"></span>
+        </button>
+
+        <button class="btn btn-default" ui-sref="ServiceTree.List( { projectInfoId:GprojectInfoId, projectId: GprojectId, serviceTreeTempId: GserviceTreeTempId })">
+            <i class="fa fa-times-circle"></i>
+            <span class="padding-right-3" ng-bind="'Cancel'| translate"></span>
+        </button>
+
+    </div>
+</div>

@@ -28,6 +28,11 @@ namespace App.UI.Models
         public virtual ServiceTreeModel ServiceTreechild { get; set; }
 
 
+        public int? ProjectInfoRef { get; set; }
+        [ForeignKey("ProjectInfoRef")]
+        public virtual ProjectInfoModel ProjectInfo { get; set; }
+
+
         [Display(Name = " شناسه شخص")]
         public int? PersoneRef { get; set; }
         [ForeignKey("PersoneRef")]

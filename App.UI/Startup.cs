@@ -68,8 +68,8 @@ namespace Paint
 
 
             //Mohsen*****************************
- 
 
+        
            // var connection = @"Server=(localdb)\mssqllocaldb;Database=EvaluationDB.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<EvaluationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalDBConection")));
 
