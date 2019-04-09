@@ -31,7 +31,7 @@
             <script type="text/ng-template" id="lazyNodeTemplate.html">
                 <i ng-if="node.hasChild" class="fa fa-folder"></i>
                 <i ng-if="!node.hasChild" class="fa fa-file"></i>
-                <span>{{node.text}}--{{node.level}}</span>
+                <span>{{node.text}} </span> <!----{{node.level}}-->
                 <!--ng-click="parent.home.f(node.)-->
                 <button ng-if="node.level==1 " title="افزودن پروژه" class="btn btn-success" ui-sref="ProjectTree.Create({parentId : node.id,level: '1' })">
                     <i class="fa fa-cogs"></i>
@@ -73,7 +73,7 @@
                                 <th class="col-xs-1 text-center" style="width: 3.166666665%">
                                     ردیف
                                 </th>
-                                <th grid-sorting="projectId" class="col-xs-2 text-center">
+                                <th grid-sorting="projectId" class="col-xs-2 text-center" style="width: 2%">
                                     شناسه
                                 </th>
                                 <th grid-sorting="serviceTitle" class="col-xs-2 text-center">
@@ -145,10 +145,10 @@
                                 <th class="col-xs-1 text-center" style="width: 3.166666665%">
                                     ردیف
                                 </th>
-                                <th grid-sorting="personId" class="col-xs-2 text-center">
+                                <th grid-sorting="personId" class="col-xs-2 text-center" style="width: 3.166666665%">
                                     شناسه
                                 </th>
-                                <th grid-sorting="serviceTitle" class="col-xs-2 text-center">
+                                <th grid-sorting="serviceTitle" class="col-xs-2 text-center" style="width: 35%">
                                     <label>{{'projectInfoTitle'| translate }}</label>
                                 </th>
                                 <th  class="col-xs-2 text-center">

@@ -1,4 +1,32 @@
 ﻿<style>
+
+    [data-title]:hover::before {
+        content: attr(data-title);
+        position: absolute;
+        bottom: 26px;
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 5px;
+        background: #000;
+        color: #fff;
+        font-family: irsans,Tahoma;
+        font-size: 14px;
+        font-weight:100;
+        z-index: 999;
+    }
+
+    .black {
+        color: black;
+    }
+
+    .red {
+        color: red;
+    }
+
+    .orange {
+        color: #ff9b00;
+    }
+
     .gray {
         background-color: #f5f5f5;
     }
@@ -10,17 +38,18 @@
     col10 {
         width: 83.33333333%;
     }
+
     col8 {
         width: 66.66666667%;
     }
+
     col6 {
         width: 50%;
     }
+
     col4 {
         width: 33.33333333%;
     }
-
-
 </style>
 
 <div class="panel panel-success">
@@ -51,6 +80,23 @@
                 <label class="control-label">{{'Evaluated'| translate }}</label>
                 <span name="evaluated" ng-bind="PopulateEvaluationForm.params.evaluated" class="form-control" placeholder="{{'Evaluated'| translate }}"></span>
             </div>
+            <div class="form-group col-md-4">
+                <label class="control-label">{{'MinGrade'| translate }}</label>
+                <span name="minGrade" ng-bind="PopulateEvaluationForm.params.minGrade" class="form-control" placeholder="{{'MinGrade'| translate }}"></span>
+            </div>
+            <p class="clearfix"></p>
+            <div class="form-group col-md-4">
+                <label class="control-label">{{'EnterDate'| translate }}</label>
+                <span name="enterDate" ng-bind="PopulateEvaluationForm.params.enterDate" class="form-control" placeholder="{{'EnterDate'| translate }}"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label class="control-label">{{'ActionDate'| translate }}</label>
+                <span name="actionDate"
+                      style="color:{{PopulateEvaluationForm.params.actionDateColor}}"
+                      ng-bind="PopulateEvaluationForm.params.actionDate"
+                      class="form-control"
+                      placeholder="{{'ActionDate'| translate }}"></span>
+            </div>
             <p class="clearfix"></p>
             <div class="form-group col-md-12">
                 <label class="control-label">{{'Description'| translate }}</label>
@@ -58,239 +104,263 @@
             </div>
             <p class="clearfix"></p>
             <div class="col-md-12" style="border:1px solid #cccccc">
-                <div class="col-md-3" style="display:none; border-left:1px solid #cccccc" >
+                <div class="col-md-3" style="border-left:1px solid #cccccc">
                     <input type="checkbox"
-                           
-                                ng-model="PopulateEvaluationForm.show0"
-                                ng-click="PopulateEvaluationForm.showWhat(0,PopulateEvaluationForm.show0)"
-                                ng-init="PopulateEvaluationForm.show0 = false;" /> zero
+                           ng-model="PopulateEvaluationForm.show0"
+                           ng-click="PopulateEvaluationForm.showWhat(0)"
+                           ng-init="PopulateEvaluationForm.show0 = true;PopulateEvaluationForm.showZero = true" /> هیچکدام
                 </div>
                 <div class="col-md-3" style="border-left:1px solid #cccccc">
                     <input type="checkbox"
-                               ng-model="PopulateEvaluationForm.show1"
-                               ng-click="PopulateEvaluationForm.showWhat(1,PopulateEvaluationForm.show1)"
-                               ng-init="PopulateEvaluationForm.show1 = false" /> امتیاز رده اول 
+                           ng-model="PopulateEvaluationForm.show1"
+                           ng-click="PopulateEvaluationForm.showWhat(1)"
+                           ng-init="PopulateEvaluationForm.show1 = false" /> <span ng-bind="PopulateEvaluationForm.params.titleGrade1"></span>
+                    <span style="border:1px solid #cccccc;padding:0 10px;background-color:#ebebe4"
+                          ng-bind="PopulateEvaluationForm.params.sumGrade1"></span>
                 </div>
                 <div class="col-md-3" style="border-left:1px solid #cccccc">
                     <input type="checkbox"
                            ng-model="PopulateEvaluationForm.show2"
-                           ng-click="PopulateEvaluationForm.showWhat(2,PopulateEvaluationForm.show2)"
-                           ng-init="PopulateEvaluationForm.show2 = false" /> امتیاز رده دوم 
+                           ng-click="PopulateEvaluationForm.showWhat(2)"
+                           ng-init="PopulateEvaluationForm.show2 = false" /> <span ng-bind="PopulateEvaluationForm.params.titleGrade2"></span>
+                    <span style="border:1px solid #cccccc;padding:0 10px;background-color:#ebebe4"
+                          ng-bind="PopulateEvaluationForm.params.sumGrade2"></span>
                 </div>
                 <div class="col-md-3">
                     <input type="checkbox"
                            ng-model="PopulateEvaluationForm.show3"
-                           ng-click="PopulateEvaluationForm.showWhat(3,PopulateEvaluationForm.show3)"
-                           ng-init="PopulateEvaluationForm.showWhat(3,true)" /> امتیاز رده سوم
+                           ng-click="PopulateEvaluationForm.showWhat(3)"
+                           ng-init="PopulateEvaluationForm.show3 = false" /> <span ng-bind="PopulateEvaluationForm.params.titleGrade3"></span>
+                    <span style="border:1px solid #cccccc;padding:0 10px;background-color:#ebebe4"
+                          ng-bind="PopulateEvaluationForm.params.sumGrade3"></span>
                 </div>
             </div>
             <p class="clearfix"></p>
 
+            <div class="col-md-3">
+                امتیاز من
+                <span style="border:1px solid #cccccc;padding:0 10px" ng-bind="PopulateEvaluationForm.params.sumGrade"></span>
+            </div>
+            <p class="clearfix"></p>
+
             <div style="border:1px solid gray;padding:0px"
-                 ng-class="{'col-md-6 col-md-offset-3' : PopulateEvaluationForm.showZero,
-                 'col-md-8 col-md-offset-2' : PopulateEvaluationForm.showOne,
-                 'col-md-10 col-md-offset-1' : PopulateEvaluationForm.showTwo,
+                 ng-class="{'col-md-12' : PopulateEvaluationForm.showZero,
+                 'col-md-12' : PopulateEvaluationForm.showOne,
+                 'col-md-12' : PopulateEvaluationForm.showTwo,
                  'col-md-12' : PopulateEvaluationForm.showThree}">
-                <div ng-class="{'col-md-10' : PopulateEvaluationForm.showZero,
-                    'col-md-8' : PopulateEvaluationForm.showOne,
+                <div ng-class="{'col-md-8' : PopulateEvaluationForm.showZero,
+                    'col-md-7' : PopulateEvaluationForm.showOne,
                     'col-md-6' : PopulateEvaluationForm.showTwo,
-                    'col-md-4' : PopulateEvaluationForm.showThree}"
+                    'col-md-5' : PopulateEvaluationForm.showThree}"
                      style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px;background-color:gray;color:white;font-weight:bold;">
                     <span ng-bind="'Title'| translate"></span>
                 </div>
-                <div class="col-md-2" ng-show="PopulateEvaluationForm.show1" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
-                    <span ng-bind="'Grade1'| translate"></span>
+                <div class="col-md-1" ng-show="PopulateEvaluationForm.show1" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
+                    <span data-title="{{PopulateEvaluationForm.params.titleGrade1}}"
+                          ng-bind="PopulateEvaluationForm.cutTitle(PopulateEvaluationForm.params.titleGrade1,100)"></span>
                 </div>
-                <div class="col-md-2" ng-show="PopulateEvaluationForm.show2" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
-                    <span ng-bind="'Grade2'| translate"></span>
+                <div class="col-md-1" ng-show="PopulateEvaluationForm.show2" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
+                    <span data-title="{{PopulateEvaluationForm.params.titleGrade2}}"
+                          ng-bind="PopulateEvaluationForm.cutTitle(PopulateEvaluationForm.params.titleGrade2,4)"></span>
                 </div>
-                <div class="col-md-2" ng-show="PopulateEvaluationForm.show3" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
-                    <span ng-bind="'Grade3'| translate"></span>
+                <div class="col-md-1" ng-show="PopulateEvaluationForm.show3" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
+                    <span data-title="{{PopulateEvaluationForm.params.titleGrade3}}"
+                          ng-bind="PopulateEvaluationForm.cutTitle(PopulateEvaluationForm.params.titleGrade3,100)"></span>
                 </div>
-                <div class="col-md-2" style="text-align:center;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
+                <div class="col-md-2" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
                     <span ng-bind="'Grade'| translate"></span>
+                </div>
+                <div class="col-md-1" style="text-align:center;border-left:1px solid white;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
+                    <span ng-bind="'Weight'| translate"></span>
+                </div>
+                <div class="col-md-1" style="text-align:center;border-bottom:1px solid gray;padding:5px 5px;background-color:gray;color:white;font-weight:bold;">
+                    <span title="{{'FinalGrade'| translate}}" ng-bind="PopulateEvaluationForm.cutTitle('FinalGrade'| translate,8)"></span>
                 </div>
                 <p class="clearfix"></p>
                 <div ng-repeat="item in PopulateEvaluationForm.params.checkedItems">
-                    <div ng-class="{'col-md-10' : PopulateEvaluationForm.showZero,
-                        'col-md-8' : PopulateEvaluationForm.showOne,
+                    <div ng-class="{'col-md-8' : PopulateEvaluationForm.showZero,
+                        'col-md-7' : PopulateEvaluationForm.showOne,
                         'col-md-6' : PopulateEvaluationForm.showTwo,
-                        'col-md-4' : PopulateEvaluationForm.showThree,
+                        'col-md-5' : PopulateEvaluationForm.showThree,
                         'topBorder' : $index==0}"
-                         style="border-bottom:1px solid #cccccc;border-left:1px solid #cccccc;padding:5px 0;padding-right:{{item.level*20+7}}px;">
+                         style="border-bottom:1px solid #cccccc;border-left:1px solid #cccccc;padding:9px 0;padding-right:{{item.level*20+7}}px;">
                         <i ng-show="item.hasChild && item.show" class="fa fa-minus" ng-click="item.show = !item.show"></i>
                         <i ng-show="item.hasChild && !item.show" class="fa fa-plus" ng-click="item.show = !item.show"></i>
                         <i ng-show="!item.hasChild" class="fa" style="padding:7.5px 6.13px"></i>
-                        <span ng-bind="item.text"></span>
+                        <span ng-show="!((item.minGrade||item.minGrade==0)&&item.maxGrade)" ng-bind="item.text"></span>
+                        <span ng-show="(item.minGrade||item.minGrade==0)&&item.maxGrade" ng-bind="item.text+' ('+item.minGrade+'~'+item.maxGrade+')'"></span>
                     </div>
-                    <div ng-show="PopulateEvaluationForm.show1" 
-                         class="col-md-2"
+                    <div ng-show="PopulateEvaluationForm.show1"
+                         class="col-md-1"
                          ng-class="{'topBorder' : $index==0}"
-                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 2px;border-left:1px solid #cccccc">
-                        <input style="width: 50px;"
+                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                        <input style="width: 100%;"
                                ng-disabled="true"
                                type="number"
                                ng-model="item.grade1" />
                     </div>
-                    <div ng-show="PopulateEvaluationForm.show2" 
-                         class="col-md-2"
+                    <div ng-show="PopulateEvaluationForm.show2"
+                         class="col-md-1"
                          ng-class="{'topBorder' : $index==0}"
-                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 2px;border-left:1px solid #cccccc">
-                        <input style="width: 50px;"
+                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                        <input style="width: 100%;"
                                ng-disabled="true"
                                type="number"
                                ng-model="item.grade2" />
                     </div>
                     <div ng-show="PopulateEvaluationForm.show3"
-                         class="col-md-2"
+                         class="col-md-1"
                          ng-class="{'topBorder' : $index==0}"
-                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 2px;border-left:1px solid #cccccc">
-                        <input style="width: 50px;"
+                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                        <input style="width: 100%;"
                                ng-disabled="true"
                                type="number"
                                ng-model="item.grade3" />
                     </div>
                     <div class="col-md-2"
                          ng-class="{'topBorder' : $index==0}"
-                         ng-hide="PopulateEvaluationForm.isHide"
-                         style="border-bottom:1px solid #cccccc;padding:2px 15px;padding: 2px;text-align:center;">
-                        <input style="width: 50px;"
+                         style="border-bottom:1px solid #cccccc;text-align:center;border-left:1px solid #cccccc"
+                         ng-style="item.itemType==0 && {'padding': '6px'}||{'padding': '2px'}">
+                        <input ng-if="item.itemType==0"
+                               style="width: 100%;"
                                ng-disabled="item.hasChild"
                                type="number"
                                name="grade{{$index}}"
                                ng-model="item.grade"
-                               min="0"
+                               min="{{item.minGrade}}"
+                               max="{{item.maxGrade}}"
                                ng-change="PopulateEvaluationForm.changeGrade(item)" />
+                        <es-dropdown ng-if="item.itemType == 1"
+                                     ng-model="item.grade"
+                                     datasource="item.qualityDs"
+                                     selected-display-name="['text']"
+                                     display-column-names="['text']"
+                                     value-member="grade"
+                                     dropdown-change="PopulateEvaluationForm.changeGrade(item)"
+                                     required>
+                        </es-dropdown>
+                    </div>
+                    <div class="col-md-1"
+                         ng-class="{'topBorder' : $index==0}"
+                         style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                        <input style="width: 100%;" ng-disabled="true" ng-model="item.weight" />
+                    </div>
+                    <div class="col-md-1"
+                         ng-class="{'topBorder' : $index==0}"
+                         style="border-bottom:1px solid #cccccc;padding:2px 15px;padding: 6px;text-align:center;">
+                        <input style="width: 100%;" ng-disabled="true" ng-model="item.finalGrade" />
+                        <span hidden ng-bind="item.finalGrade = item.grade*item.weight/100"></span>
                     </div>
                     <div ng-if="item.show" ng-include="'GridSubItem.html'"></div>
                 </div>
                 <script type="text/ng-template" id="GridSubItem.html">
                     <div ng-repeat="item in item.subItems">
-                        <div ng-class="{'col-md-10' : PopulateEvaluationForm.showZero,
-                            'col-md-8' : PopulateEvaluationForm.showOne,
+                        <div ng-class="{'col-md-8' : PopulateEvaluationForm.showZero,
+                            'col-md-7' : PopulateEvaluationForm.showOne,
                             'col-md-6' : PopulateEvaluationForm.showTwo,
-                            'col-md-4' : PopulateEvaluationForm.showThree}"
-                             style="border-bottom:1px solid #cccccc;border-left:1px solid #cccccc;padding: 5px 0;padding-right:{{item.level*20+7}}px;">
+                            'col-md-5' : PopulateEvaluationForm.showThree}"
+                             style="border-bottom:1px solid #cccccc;border-left:1px solid #cccccc;padding: 9px 0;padding-right:{{item.level*20+7}}px;">
                             <i ng-show="item.hasChild && item.show" class="fa fa-minus" ng-click="item.show = !item.show"></i>
                             <i ng-show="item.hasChild && !item.show" class="fa fa-plus" ng-click="item.show = !item.show"></i>
                             <i ng-show="!item.hasChild" class="fa" style="padding:7.5px 6.13px"></i>
-                            <span ng-bind="item.text"></span>
+                            <span ng-show="!((item.minGrade||item.minGrade==0)&&item.maxGrade)" ng-bind="item.text"></span>
+                            <span ng-show="(item.minGrade||item.minGrade==0)&&item.maxGrade" ng-bind="item.text+' ('+item.minGrade+'~'+item.maxGrade+')'"></span>
                         </div>
-                        <div ng-show="PopulateEvaluationForm.show1" 
-                             class="col-md-2"
-                             style="border-bottom:1px solid #cccccc;text-align:center;padding: 2px;border-left:1px solid #cccccc">
-                            <input style="width: 50px;"
+                        <div ng-show="PopulateEvaluationForm.show1"
+                             class="col-md-1"
+                             style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                            <input style="width: 100%;"
                                    ng-disabled="true"
                                    type="number"
                                    ng-model="item.grade1" />
                         </div>
-                        <div ng-show="PopulateEvaluationForm.show2" 
-                             class="col-md-2"
-                             style="border-bottom:1px solid #cccccc;text-align:center;padding: 2px;border-left:1px solid #cccccc">
-                            <input style="width: 50px;"
+                        <div ng-show="PopulateEvaluationForm.show2"
+                             class="col-md-1"
+                             style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                            <input style="width: 100%;"
                                    ng-disabled="true"
                                    type="number"
                                    ng-model="item.grade2" />
                         </div>
-                        <div ng-show="PopulateEvaluationForm.show3" 
-                             class="col-md-2"
-                             style="border-bottom:1px solid #cccccc;text-align:center;padding: 2px;border-left:1px solid #cccccc">
-                            <input style="width: 50px;"
+                        <div ng-show="PopulateEvaluationForm.show3"
+                             class="col-md-1"
+                             style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                            <input style="width: 100%;"
                                    ng-disabled="true"
                                    type="number"
                                    ng-model="item.grade3" />
                         </div>
                         <div class="col-md-2"
-                             ng-hide="PopulateEvaluationForm.isHide"
-                             style="border-bottom:1px solid #cccccc;padding: 2px;text-align: center;">
-                            <input style="width: 50px;"
+                             ng-class="{'topBorder' : $index==0}"
+                             style="border-bottom:1px solid #cccccc;text-align:center;border-left:1px solid #cccccc"
+                             ng-style="item.itemType==0 && {'padding': '6px'}||{'padding': '2px'}">
+                            <input ng-if="item.itemType==0"
+                                   style="width: 100%;"
                                    ng-disabled="item.hasChild"
                                    type="number"
                                    name="grade{{$index}}"
                                    ng-model="item.grade"
-                                   min="0"
+                                   min="{{item.minGrade}}"
+                                   max="{{item.maxGrade}}"
                                    ng-change="PopulateEvaluationForm.changeGrade(item)" />
+                            <es-dropdown ng-if="item.itemType == 1"
+                                         ng-model="item.grade"
+                                         datasource="item.qualityDs"
+                                         selected-display-name="['text']"
+                                         display-column-names="['text']"
+                                         value-member="grade"
+                                         dropdown-change="PopulateEvaluationForm.changeGrade(item)"
+                                         required>
+                            </es-dropdown>
                         </div>
-                        <dif ng-if="item.show" ng-include="'GridSubItem.html'">
+                        <div class="col-md-1"
+                             style="border-bottom:1px solid #cccccc;padding: 6px;text-align: center;border-left:1px solid #cccccc">
+                            <input style="width: 100%;" ng-disabled="true" ng-model="item.weight" />
+                        </div>
+                        <div class="col-md-1"
+                             style="border-bottom:1px solid #cccccc;padding: 6px;text-align: center;">
+                            <input style="width: 100%;" ng-disabled="true" ng-model="item.finalGrade" />
+                            <span hidden ng-bind="item.finalGrade = item.grade*item.weight/100"></span>
+                        </div>
+                        <div ng-if="item.show" ng-include="'GridSubItem.html'"></div>
                     </div>
                 </script>
-
+                <div ng-class="{'col-md-8' : PopulateEvaluationForm.showZero,
+                            'col-md-7' : PopulateEvaluationForm.showOne,
+                            'col-md-6' : PopulateEvaluationForm.showTwo,
+                            'col-md-5' : PopulateEvaluationForm.showThree}"
+                     style="font-weight:bold;border-bottom:1px solid #cccccc;border-left:1px solid #cccccc;padding: 9px 0;padding-right:{{item.level*20+7}}px;">
+                    <span style="padding:0 10px">{{'Sum'| translate }}</span>
+                </div>
+                <div ng-show="PopulateEvaluationForm.show1"
+                     class="col-md-1"
+                     style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                    <input style="font-weight:bold;width: 100%;" ng-disabled="true" ng-model="PopulateEvaluationForm.params.sumGrade1" />
+                </div>
+                <div ng-show="PopulateEvaluationForm.show2"
+                     class="col-md-1"
+                     style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                    <input style="font-weight:bold;width: 100%;" ng-disabled="true" ng-model="PopulateEvaluationForm.params.sumGrade2" />
+                </div>
+                <div ng-show="PopulateEvaluationForm.show3"
+                     class="col-md-1"
+                     style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                    <input style="font-weight:bold;width: 100%;" ng-disabled="true" ng-model="PopulateEvaluationForm.params.sumGrade3" />
+                </div>
+                <div class="col-md-2"
+                     ng-class="{'topBorder' : $index==0}"
+                     style="border-bottom:1px solid #cccccc;text-align:center;padding: 6px;border-left:1px solid #cccccc">
+                    <input style="font-weight:bold;width: 100%;" ng-class="PopulateEvaluationForm.sumColor" ng-disabled="true" ng-model="PopulateEvaluationForm.params.sumGrade" />
+                </div>
                 <p class="clearfix"></p>
-                <div style="background-color:gray;padding:10px">
-                    <!--<button class="btn btn-success"
-                            ng-click="PopulateEvaluationForm.New()"
-                            ng-disabled="!PopulateEvaluationForm.TreeLoad"
-                            style="margin: 5px;">
-                        <i class="fa fa-spin fa-spinner" ng-if="!PopulateEvaluationForm.TreeLoad"></i>
-                        <i class="fa fa-plus-circle" ng-if="PopulateEvaluationForm.TreeLoad"></i>
-                        <span class="padding-right-3" ng-if="!PopulateEvaluationForm.TreeLoad">{{'Loading'| translate }}</span>
-                        <span class="padding-right-3" ng-if="PopulateEvaluationForm.TreeLoad">{{'New'| translate}}</span>
-                    </button>-->
-                </div>
+                <div style="background-color:gray;padding:10px"></div>
             </div>
-            <!-- Modal -->
-            <!--<div class="modal fade" id="esModal" role="dialog" tabindex="1">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content" style="width:350px">
-                        <div class="modal-header popupHeadSuccess">
-                            <p>{{'Items'| translate }}<button type="button" class="close" data-dismiss="modal"><i class="fa fa-close"></i></button></p>
-                        </div>
-                        <div class="modal-body popupBody" style="height:400px;overflow:auto">
-                            <div ng-repeat="item in PopulateEvaluationForm.ItemsList">
-                                <i ng-show="item.hasChild && item.show" class="fa fa-minus" ng-click="item.show = !item.show"></i>
-                                <i ng-show="item.hasChild && !item.show" class="fa fa-plus" ng-click="item.show = !item.show"></i>
-                                <i ng-show="!item.hasChild" class="fa" style="padding:7.5px 6.13px"></i>
-                                <i class="fa fa-square-o" ng-show="!item.checked && !item.childrenSelectAll" ng-click="PopulateEvaluationForm.check(item);"></i>
-                                <i class="fa fa-check-square-o" ng-show="item.checked && !item.childrenSelectAll" ng-click="PopulateEvaluationForm.check(item);"></i>
-                                <i class="fa fa-square" ng-show="item.childrenSelectAll" ng-click="PopulateEvaluationForm.check(item);"></i>
-                                <span ng-bind="item.text"></span>
-                                <div ng-show="item.show"
-                                     ng-include="'subItem.html'"
-                                     style="padding-right:7px;margin-right:7px;border-right:1px solid gray;">
-                                </div>
-                            </div>
-                            <script type="text/ng-template" id="subItem.html">
-                                <div ng-repeat="item in item.subItems">
-                                    <i ng-show="item.hasChild && item.show" class="fa fa-minus" ng-click="item.show = !item.show"></i>
-                                    <i ng-show="item.hasChild && !item.show" class="fa fa-plus" ng-click="item.show = !item.show"></i>
-                                    <i ng-show="!item.hasChild" class="fa" style="padding:7.5px 6.13px"></i>
-                                    <i class="fa fa-square-o" ng-show="!item.checked && !item.childrenSelectAll" ng-click="PopulateEvaluationForm.check(item);"></i>
-                                    <i class="fa fa-check-square-o" ng-show="item.checked && !item.childrenSelectAll" ng-click="PopulateEvaluationForm.check(item);"></i>
-                                    <i class="fa fa-square" ng-show="item.childrenSelectAll" ng-click="PopulateEvaluationForm.check(item);"></i>
-                                    <span ng-bind="item.text"></span>
-                                    <div ng-show="item.show"
-                                         ng-include="'subItem.html'"
-                                         style="padding-right:7px;margin-right:7px;border-right:1px solid gray;">
-                                    </div>
-                                </div>
-                            </script>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" ng-click="PopulateEvaluationForm.Confirm()">
-                                <i class="fa fa-check-circle"></i>
-                                <span class="padding-right-3">{{'Confirm' | translate}}</span>
-                            </button>
-                            <button class="btn btn-default" ng-click="PopulateEvaluationForm.Close()">
-                                <i class="fa fa-times-circle"></i>
-                                <span class="padding-right-3">{{'Close' | translate}}</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
         </form>
     </div>
     <div class="panel-footer">
         <button class="btn btn-primary"
                 btn-icon="fa fa-check"
-                es-ng-post
-                post-object="PopulateEvaluationForm.params"
-                es-ng-post-form-name="PopulateEvaluationFormForm"
-                es-ng-post-validation-object="errors"
-                es-ng-post-disable-object="PopulateEvaluationFormForm.$invalid"
-                es-ng-post-url="/somewhere/check"
-                es-ng-post-success="PopulateEvaluationForm.success()"
-                es-ng-post-error="PopulateEvaluationFormForm.error()">
+                ng-click="PopulateEvaluationForm.send(PopulateEvaluationForm.params.checkedItems,'/somewhere/check')">
             <i class="fa fa-pencil"></i>
             <span class="padding-right-3" ng-bind="'Modify'| translate"></span>
         </button>

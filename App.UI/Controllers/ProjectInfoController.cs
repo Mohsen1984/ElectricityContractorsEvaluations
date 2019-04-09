@@ -53,8 +53,8 @@ namespace App.UI.Controllers
             if (model.ProjectTreeRef != 0)
                 filtered = filtered.Where(x => x.ProjectTreeRef==model.ProjectTreeRef).ToList();
 
-            //if (model.ServiceTemplateTreeRef > -1)
-            //    filtered = filtered.Where(x => x.ServiceTemplateTreeRef == model.ServiceTemplateTreeRef).ToList();
+            if (model.ServiceTemplateTreeRef > -1)
+                filtered = filtered.Where(x => x.ServiceTemplateTreeRef == model.ServiceTemplateTreeRef).ToList();
 
             if (model.Title != null)
                 filtered = filtered.Where(x => x.Title.Contains(model.Title)).ToList();

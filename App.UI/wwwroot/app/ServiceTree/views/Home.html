@@ -36,16 +36,16 @@
 
             <i ng-if="node.hasChild" class="fa fa-server"></i>
             <i ng-if="!node.hasChild" class="fa fa-file"></i>
-            <span>{{node.text}} ( {{node.Code}} )-{{node.id}}</span>
+            <span>{{node.text}} </span><!--( {{node.Code}} )-{{node.id}}</span>-->
 
-            <button ng-if="node.level==2 " title="افزودن خدمت" class="btn btn-success" ui-sref="ServiceTree.CreateAsChild({id : node.id,level: '2' })">
+            <!--<button ng-if="node.level==2 " title="افزودن خدمت" class="btn btn-success" ui-sref="ServiceTree.CreateAsChild({id : node.id,level: '2' })">
                 <i class="fa fa-cogs"></i>
             </button>
 
             <button ng-if="node.level==2 || node.level==3" title="افزودن نقش" class="btn btn-success" ui-sref="ServiceTree.CreateAsChild({id : node.id,level: '3' })">
                 <i class="fa fa-child"></i>
             </button>
-            <button es-btn title="ویرایش" btn-color="primary" btn-icon="fa fa-pencil" ui-sref="ServiceTree.Edit({id :node.id })"></button>
+            <button es-btn title="ویرایش" btn-color="primary" btn-icon="fa fa-pencil" ui-sref="ServiceTree.Edit({id :node.id })"></button>-->
             <button ng-click="parent.home.ServiceTreeClick(node)" es-btn title="مشاهده افراد خدمت " btn-color="primary" btn-icon="fa fa-pencil">
                 <i class="fa fa-plus"></i>
             </button>

@@ -20,5 +20,11 @@
   "Grade1": "Grade1",
   "Grade2": "Grade2",
   "Grade3": "Grade3",
+  "MinGrade": "MinGrade",
+  "EnterDate": "EnterDate",
+  "ActionDate": "ActionDate",
+  "Weight": "Weight",
+  "FinalGrade": "Final Grade %",
+  "Sum": "Sum",
   "Items": "Items"
 }

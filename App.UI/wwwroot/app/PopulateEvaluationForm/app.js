@@ -15,8 +15,7 @@ app.config(['$translateProvider', '$stateProvider', '$urlRouterProvider', 'cultu
 
     $stateProvider
         .state('PopulateEvaluationForm', {
-            url: '/:id',
-            //url: '/',
+            url: '/',
             controller: "PopulateEvaluationForm",
             controllerAs: 'PopulateEvaluationForm',
             templateUrl: viewPath + '/PopulateEvaluationForm.html'
@@ -25,7 +24,7 @@ app.config(['$translateProvider', '$stateProvider', '$urlRouterProvider', 'cultu
 }]);
 //controller
 app.controller("PopulateEvaluationForm",
-    function ($scope, $state, $stateParams, esDatasource, $http) {
+    function ($scope, $state, esDatasource, $http) {
 
         var vm = this;
 
@@ -43,14 +42,21 @@ app.controller("PopulateEvaluationForm",
             vm.params.evaluator = detailsDs.$data.evaluator;
             vm.params.evaluated = detailsDs.$data.evaluated;
             vm.params.description = detailsDs.$data.description;
+            vm.params.titleGrade1 = detailsDs.$data.titleGrade1;
+            vm.params.titleGrade2 = detailsDs.$data.titleGrade2;
+            vm.params.titleGrade3 = detailsDs.$data.titleGrade3;
+            vm.params.minGrade = detailsDs.$data.minGrade;
+            vm.params.enterDate = detailsDs.$data.enterDate;
+            vm.params.actionDate = detailsDs.$data.actionDate;
+            vm.params.actionDateColor = detailsDs.$data.actionDateColor;
+            vm.params.sumGrade = detailsDs.$data.sumGrade;
+            vm.params.sumGrade1 = detailsDs.$data.sumGrade1;
+            vm.params.sumGrade2 = detailsDs.$data.sumGrade2;
+            vm.params.sumGrade3 = detailsDs.$data.sumGrade3;
         };
 
         var detailsDs = new esDatasource({
             url: '/PopulateEvaluationForm/GetDetails',
-            method: 'GET',
-            params: {
-                id: $stateParams.id
-            },
             afterResponse: setDetails
         });
         detailsDs.refresh();
@@ -70,22 +76,21 @@ app.controller("PopulateEvaluationForm",
         };
 
         var getCheckedItem = function (array) {
-            if (array) {
-                var filteredItems = angular.copy(array.filter(function (item) {
-                    return item.checked === true;
-                }));
-                var TArray = angular.copy(filteredItems);
-                angular.forEach(TArray, function (item, key) {
-                    level += 1;
-                    item.level = level;
-                    if (item.hasChild) {
-                        item.subItems = [];
-                        item.subItems = getCheckedItem(filteredItems[key].subItems);
-                    }
-                    level -= 1;
-                });
-                return TArray;
-            }
+
+            var filteredItems = angular.copy(array.filter(function (item) {
+                return item.checked === true;
+            }));
+            var TArray = angular.copy(filteredItems);
+            angular.forEach(TArray, function (item, key) {
+                level += 1;
+                item.level = level;
+                if (item.hasChild) {
+                    item.subItems = [];
+                    item.subItems = getCheckedItem(filteredItems[key].subItems);
+                }
+                level -= 1;
+            });
+            return TArray;
 
         };
 
@@ -170,68 +175,96 @@ app.controller("PopulateEvaluationForm",
             }
         };
 
-        vm.changeGrade = function (item) {
-            setParentItemGrade(item);
+        var calculateSumGrade = function () {
+            vm.params.sumGrade = 0;
+            angular.forEach(vm.params.checkedItems, function (item) {
+                vm.params.sumGrade += item.grade;
+            });
         };
 
-        vm.showWhat = function (num, valid) {
-            if (valid) {
-                vm.showZero = false;
+        var setSumColor = function () {
+            if (vm.params.sumGrade < vm.params.minGrade)
+                vm.sumColor = 'red';
+            else if (vm.show3) {
+                if (vm.params.sumGrade < vm.params.sumGrade3)
+                    vm.sumColor = 'orange';
+                else
+                    vm.sumColor = 'black';
+                return;
+            }
+            else if (vm.show2) {
+                if (vm.params.sumGrade < vm.params.sumGrade2)
+                    vm.sumColor = 'orange';
+                else
+                    vm.sumColor = 'black';
+                return;
+            }
+            else if (vm.show1) {
+                if (vm.params.sumGrade < vm.params.sumGrade1)
+                    vm.sumColor = 'orange';
+                else
+                    vm.sumColor = 'black';
+                return;
+            }
+        };
+
+        vm.changeGrade = function (item) {
+            setParentItemGrade(item);
+            calculateSumGrade();
+            setSumColor();
+        };
+
+        vm.showWhat = function (num) {
+            if (num == 0) {
                 vm.showOne = false;
                 vm.showTwo = false;
                 vm.showThree = false;
-                vm.show0 = false;
                 vm.show1 = false;
                 vm.show2 = false;
                 vm.show3 = false;
-                if (num == 0) {
-                    vm.showZero = true;
-                    vm.show0 = true;
-                }
-                else if (num == 1) {
-                    vm.showOne = true;
-                    vm.show1 = true;
-                }
-                else if (num == 2) {
-                    vm.showTwo = true;
-                    vm.show1 = true;
-                    vm.show2 = true;
-                }
-                else if (num == 3) {
-                    vm.showThree = true;
-                    vm.show1 = true;
-                    vm.show2 = true;
-                    vm.show3 = true;
-                }
+                vm.showZero = true;
+                vm.show0 = true;
             }
             else {
                 vm.showZero = false;
-                vm.showOne = false;
-                vm.showTwo = false;
-                vm.showThree = false;
                 vm.show0 = false;
-                vm.show1 = false;
-                vm.show2 = false;
-                vm.show3 = false;
-                if (num == 0 || num == 1) {
-                    vm.showZero = true;
-                    vm.show0 = true;
-                }
-                else if (num == 2) {
-                    vm.showOne = true;
-                    vm.show1 = true;
-                }
-                else if (num == 3) {
-                    vm.showOne = true;
-                    vm.show1 = true;
-                    vm.showTwo = true;
-                    vm.show2 = true;
+                var count = 0;
+                if (vm.show1)
+                    count += 1;
+                if (vm.show2)
+                    count += 1;
+                if (vm.show3)
+                    count += 1;
+                switch (count) {
+                    case 1:
+                        vm.showThree = false;
+                        vm.showTwo = false;
+                        vm.showOne = true;
+                        break;
+                    case 2:
+                        vm.showThree = false;
+                        vm.showTwo = true;
+                        break;
+                    case 3:
+                        vm.showThree = true;
+                        break;
+                    case 0:
+                        vm.showOne = false;
+                        vm.showTwo = false;
+                        vm.showThree = false;
+                        vm.show1 = false;
+                        vm.show2 = false;
+                        vm.show3 = false;
+                        vm.showZero = true;
+                        vm.show0 = true;
+                        break;
                 }
             }
+            setSumColor();
+
         };
 
         var setItems = function (data) {
-            console.log(ds.$data);
             vm.ItemsList = ds.$data;
             angular.forEach(vm.ItemsList, function (item) {
                 setSubItemCheck(item, true);
@@ -242,12 +275,49 @@ app.controller("PopulateEvaluationForm",
 
         var ds = new esDatasource({
             url: '/PopulateEvaluationForm/getTreeItems',
-            method:'GET',
-            params: {
-                id: $stateParams.id
-            },
             afterResponse: setItems
         });
         ds.refresh();
+
+        vm.cutTitle = function (input, num) {
+            if (input) {
+                if (input.length <= num)
+                    return input;
+                var str = '';
+                for (var j = 0; j < num; j++) {
+                    str = str + input[j];
+                }
+                str += '...';
+                return str;
+            }
+        };
+
+        var calculateFilteredItems = function (array, filteredItems) {
+            angular.forEach(array, function (item) {
+                vm.filteredItemsCount += 1;
+                filteredItems[vm.filteredItemsCount] = {};
+                filteredItems[vm.filteredItemsCount].id = item.id;
+                filteredItems[vm.filteredItemsCount].grade = item.grade;
+                if (item.hasChild)
+                    calculateFilteredItems(item.subItems, filteredItems);
+            });
+        };
+
+        vm.send = function (items, url) {
+            var filteredItems = [];
+            vm.filteredItemsCount = -1;
+            calculateFilteredItems(items, filteredItems);
+            $http({
+                method: 'POST',
+                url: url,
+                data: {
+                    items: filteredItems
+                }
+            }).then(function (response) {
+                console.log(response.data);
+            }, function (error) {
+                console.log(error.data);
+            });
+        };
 
     });
