@@ -74,6 +74,25 @@ namespace App.UI.Controllers
              }
         }
 
+        [HttpPost]
+        public ActionResult AddTask([FromBody] AddTaskModel task)
+        {
+            TaskListModel newtask = new TaskListModel();
+            newtask.Title = task.Title;
+            newtask.WfInstanceID = task.WfInstanceID;
+            newtask.FormLink = task.FormLink;
+            newtask.DueDate = task.DueDate;
+            newtask.SenderProjectMemberRef = task.SenderProjectMemberRef;
+            newtask.ReciverProjectMemberRef = task.ReciverProjectMemberRef;
+            newtask.Priority = task.Priority;
+            newtask.ProjectInfoRef = task.ProjectInfoRef;
+            newtask.EvaluationPeriodRef = task.EvaluationPeriodRef;
+
+            db.TaskLists.Add(newtask);
+
+            return Json(newtask.TaskId);
+        }
+
         [HttpGet]
         public ActionResult GetAllPaged(TaskListSearchModel model)
         {

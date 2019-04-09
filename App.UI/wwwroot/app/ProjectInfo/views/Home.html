@@ -46,10 +46,10 @@
                         <th class="col-xs-1 text-center" style="width: 3.166666665%">
                             ردیف
                         </th>
-                        <th grid-sorting="ProjectInfoId" class="col-xs-2 text-center">
+                        <!--<th  grid-sorting="ProjectInfoId" class="col-xs-2 text-center" style="width: 3.166666665%">
                             <label class="control-label required-label">{{'projectId'| translate }}</label>
-                        </th>
-                        <th grid-sorting="nationalCode" class="col-xs-1 text-center">
+                        </th>-->
+                        <th grid-sorting="nationalCode" class="col-xs-1 text-center" style="width: 20%">
                             <label class="control-label required-label">{{'title'| translate }}</label>
                         </th>
                         <th grid-sorting="nationalCode" class="col-xs-1 text-center">
@@ -61,7 +61,7 @@
                         <th grid-sorting="name" class="col-xs-2 text-center">
                             <label class="control-label required-label">{{'reginalPowerCorpRef'| translate }}</label>
                         </th>
-                        <th grid-sorting="state" class="col-xs-2 text-center">
+                        <th grid-sorting="state" class="col-xs-2 text-center" style="width: 3.166666665%">
                             <label class="control-label required-label">{{'state'| translate }}</label>
                         </th>
                     </tr>
@@ -75,7 +75,7 @@
                     </tr>
                     <tr ng-repeat="item in $items" grid-selectable="item">
                         <td class="text-center" ng-bind="item.$index"></td>
-                        <td ng-bind="item.projectId"></td>
+                        <!--<td ng-bind="item.projectInfoId" ></td>-->
                         <td ng-bind="item.title"></td>
                         <td ng-bind="item.projectNo"></td>
                         <td ng-bind="item.projectTreeTitle"></td>

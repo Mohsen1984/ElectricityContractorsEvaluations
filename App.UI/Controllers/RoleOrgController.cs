@@ -21,6 +21,24 @@ namespace App.UI.Controllers
             AllItems = a.ToList();
         }
 
+        [Route("api/Roles/{formTemplateID}")]
+        [HttpGet]
+        public ActionResult GetRols(Int32 formTemplateID)
+        {
+            //var a = (from pm in db.ProjectMembers //join p in db.ProjectInfos on pm.ProjectInfoRef equals p.ProjectInfoId
+            //         join eft in db.EVFormTemplates on pm.RoleOrgsRef equals eft.EvaluatedRoleRef
+            //         where eft.EVFormTemplateId == formTemplateID
+
+            //         select new RoleInfoModel { ID = pm.ProjectMemberID, Title = pm.RoleOrgs.Title }).ToList();
+            //return Json(a);
+            return Json(new List<RoleInfoModel>() {
+                new RoleInfoModel(){  ID = 1, Title ="مجری الکتریکی"},
+                new RoleInfoModel(){  ID = 2, Title ="ناظر عاليه الكتريكي"},
+                new RoleInfoModel(){  ID = 3, Title ="مدیر پروژه الکتریک"},
+                new RoleInfoModel(){  ID = 4, Title ="سرپرست کارگاه الکتریک"},
+                new RoleInfoModel(){  ID = 5, Title ="سر ناظر الکتریکی"},
+            });
+        }
 
         public ActionResult Get_Lov()
         {
