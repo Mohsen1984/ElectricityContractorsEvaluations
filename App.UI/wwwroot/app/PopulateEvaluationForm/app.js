@@ -25,7 +25,7 @@ app.config(['$translateProvider', '$stateProvider', '$urlRouterProvider', 'cultu
 //controller
 app.controller("PopulateEvaluationForm",
     function ($scope, $state, $stateParams, esDatasource) {
-        alert("salam="+$stateParams.id);
+       // alert("salam="+$stateParams.id);
         var vm = this;
 
         vm.ItemsList = [];
@@ -54,11 +54,19 @@ app.controller("PopulateEvaluationForm",
             vm.params.sumGrade2 = detailsDs.$data.sumGrade2;
             vm.params.sumGrade3 = detailsDs.$data.sumGrade3;
         };
-
         var detailsDs = new esDatasource({
-            url: '/PopulateEvaluationForm/GetDetails',
+            url: 'PopulateEvaluationForm/GetDetails',
+            method: 'GET',
+            params: {
+                id: $stateParams.id,
+
+            },
             afterResponse: setDetails
         });
+        //var detailsDs = new esDatasource({
+        //    url: '/PopulateEvaluationForm/GetDetails',
+        //    afterResponse: setDetails
+        //});
         detailsDs.refresh();
 
         vm.TreeLoad = false;
