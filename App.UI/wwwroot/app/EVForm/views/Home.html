@@ -25,18 +25,21 @@
                         btn-icon="fa fa-list-alt"
                         ng-show="$selectedItem"
                         ui-sref="EVForm.Details({id : $selectedItem.evFormId })"></button>
-                <button es-btn
-                        btn-color="primary"
-                        btn-icon="fa fa-pencil"
-                        ng-show="$selectedItem"
-                        ui-sref="EVForm.Edit({id : $selectedItem.evFormId })"></button>
+
+                <a href="/PopulateEvaluationForm#!/{{$selectedItem.evFormId}}" class="btn btn-default">ویرایش</a>
+                <a href="/PopulateEvaluationForm#!/{{$selectedItem.evFormId}}" class="btn btn-default">جزییات</a>
+                <!--<button es-btn
+            btn-color="primary"
+            btn-icon="fa fa-pencil"
+            ng-show="$selectedItem"
+            ui-sref="EVForm.Edit({id : $selectedItem.evFormId })"></button>-->
                 <button es-btn
                         btn-color="danger"
                         btn-icon="fa fa-close"
                         ng-show="$selectedItem"
                         ui-sref="EVForm.Delete({id : $selectedItem.evFormId })"></button>
                 <button es-btn
-                         title="رکورد های زیر مجموعه" 
+                        title="رکورد های زیر مجموعه"
                         btn-color="warning"
                         btn-icon="fa fa-leanpub"
                         ng-show="$selectedItem"

@@ -15,7 +15,7 @@ app.config(['$translateProvider', '$stateProvider', '$urlRouterProvider', 'cultu
 
     $stateProvider
         .state('PopulateEvaluationForm', {
-            url: '/',
+            url: '/:id',
             controller: "PopulateEvaluationForm",
             controllerAs: 'PopulateEvaluationForm',
             templateUrl: viewPath + '/PopulateEvaluationForm.html'
@@ -24,8 +24,8 @@ app.config(['$translateProvider', '$stateProvider', '$urlRouterProvider', 'cultu
 }]);
 //controller
 app.controller("PopulateEvaluationForm",
-    function ($scope, $state, esDatasource, $http) {
-
+    function ($scope, $state, $stateParams, esDatasource) {
+        alert("salam="+$stateParams.id);
         var vm = this;
 
         vm.ItemsList = [];
@@ -274,7 +274,12 @@ app.controller("PopulateEvaluationForm",
         };
 
         var ds = new esDatasource({
-            url: '/PopulateEvaluationForm/getTreeItems',
+            url: '/PopulateEvaluationForm/getTreeItems' ,
+            method: 'GET',
+            params: {
+                id: $stateParams.id,
+
+            },
             afterResponse: setItems
         });
         ds.refresh();

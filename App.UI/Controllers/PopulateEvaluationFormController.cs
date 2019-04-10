@@ -307,8 +307,8 @@ namespace App.UI.Controllers
         //    });
         //    return Json(PopulateTreeItems);
         //}
-
-        public ActionResult getTreeItems(int id= 29569)
+        [HttpGet]
+        public ActionResult getTreeItems(int id)
         {
             var PopulateTreeItems = new List<PopulateTreeItems>();
             var qualityDs = new List<Quality>();
